@@ -64,14 +64,17 @@ function mostrarNombresRepos(repos) {
 }
 
 function mostrarCommitsRepo(commits) {
-	console.log(commits)
+	commits.data.forEach(element => {
+		console.log(element.commit.author.name);
+		console.log(element.commit.author.date)
+	});
 	
 	
 }
 
 //response =   obtenerUsuario(user).then(val => console.log(val));
-//obtenerReposUsuario(user);
-obtenerCommitsRepo('TDS2122-31-AppVideo', "JuanPedroMartinez");
+obtenerReposUsuario(user);
+
 
 
 
