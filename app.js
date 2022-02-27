@@ -42,24 +42,47 @@ async function obtenerReposUsuario(usuario) {
 		type: "all",
 	})
 	mostrarNombresRepos(res)
-	return res;
+	var salida = [];
+	res.data.forEach(element => {
+		salida.push({ "repo": element.name, "owner": element.owner.login });
+	})
+	return salida;
 }
+
+async function obtenerColaboradoresRepo(repositorio, usuario) {
+	var res = await octokit.rest.repos.listCollaborators({
+		owner: usuario,
+		repo: repositorio,
+	});
+	var salida = [];
+	res.data.forEach(element => {
+		salida.push({ "name": element.login })
+	})
+	return salida;
+}
+
 
 async function obtenerCommitsRepo(repositorio, usuario) {
 	var res = await octokit.rest.repos.listCommits({
 		owner: usuario,
 		repo: repositorio,
-	});
+	})
+	var salida = [];
+	res.data.forEach(element => {
+		salida.push({ "author": element.commit.author.name, "date": element.commit.author.date });
 
-	mostrarCommitsRepo(res);
-	return res;
+	})
+	//mostrarCommitsRepo(res);
+	return salida;
 }
 
+obtenerCommitsRepo("Ejemplo1", "JuanpeTFG")
 function mostrarNombresRepos(repos) {
 
 	repos.data.forEach(element => {//para cada repo procesamos los commits
 		obtenerCommitsRepo(element.name, element.owner.login);
 	});
+
 
 }
 
@@ -68,12 +91,12 @@ function mostrarCommitsRepo(commits) {
 		console.log(element.commit.author.name);
 		console.log(element.commit.author.date)
 	});
-	
-	
+
+
 }
 
 //response =   obtenerUsuario(user).then(val => console.log(val));
-obtenerReposUsuario(user);
+//obtenerReposUsuario(user);
 
 
 
@@ -168,6 +191,21 @@ app.get('/home', function (request, response) {
 app.get('/registro', function (request, response) {
 	response.sendFile(path.join(__dirname + '/registro.html'));
 });
+
+app.get('/data', function (request, response) {
+	if (request.query.datos == "repos") {
+		obtenerReposUsuario(request.session.username).then(resu => response.send(resu));
+
+	}
+	if (request.query.datos == "commits") {
+		obtenerCommitsRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
+	}
+	if (request.query.datos == "collaborators") {
+		obtenerColaboradoresRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
+	}
+
+});
+
 
 
 app.listen(3000);

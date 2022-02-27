@@ -1,8 +1,11 @@
-var ctx = document.getElementById('myChart').getContext("2d"); // node
 
 
-console.log(ctx)
-const myChart = new Chart(ctx, {
+var barChart = document.getElementById('myChart').getContext("2d"); // node
+
+var areaChart = document.getElementById('areaChart').getContext("2d");
+
+
+const myChart = new Chart(barChart, {
     type: 'bar',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -31,12 +34,62 @@ const myChart = new Chart(ctx, {
     options: {
         responsive: true,
         maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
     }
 });
+
+
+
+//commits por cada colaborador.
+colaboradores = [];
+
+
+
+
+console.log(colaboradores)
+
+const myChart2 = new Chart(areaChart, {
+    type: 'bar',
+    data: {
+        labels: colaboradores,
+        datasets: [{
+            label: 'Commits por colaborador',
+            data: [300,200,100],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+        }],
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+    }
+
+});
+
+function añadirCOlaboradores(){
+    myChart2.data.labels.push("hola");
+    myChart2.update();
+}
+
+añadirCOlaboradores();
+
+//ojo con las rutas en caso de no estar en localhost, puede cambiar el funcionamiento
+//https://stackoverflow.com/questions/1034621/get-the-current-url-with-javascript
+async function getColaboradores() {
+    var aux =await fetch(window.location.protocol+"/data?datos=collaborators&repo=Ejemplo1")
+    return await aux.json();
+
+}
+
+getColaboradores().then(res =>{
+    res.forEach(element => {
+       myChart2.data.labels.push(element.name)
+    })
+
+    myChart2.update()
+}
+);
