@@ -29,27 +29,27 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 
 var octokit = new Octokit({ auth: "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" })
-let user = "JuanpeTFG"
+let user = "JuanPedroMartinez"
 
-async function obtenerUsuario(usuario) {
+async function getUsuario(usuario) {
 	var res = await octokit.rest.users.getByUsername({ username: usuario });
 	return res;
 }
 
-async function obtenerReposUsuario(usuario) {
+async function getReposUsuario(usuario) {
 	var res = await octokit.rest.repos.listForAuthenticatedUser({
 
 		type: "all",
 	})
-	mostrarNombresRepos(res)
+	console.log(res)
 	var salida = [];
 	res.data.forEach(element => {
-		salida.push({ "repo": element.name, "owner": element.owner.login });
+		salida.push({ "repo": element.name, "owner": element.owner.login, "url": element.clone_url});
 	})
 	return salida;
 }
 
-async function obtenerColaboradoresRepo(repositorio, usuario) {
+async function getColaboradoresRepo(repositorio, usuario) {
 	var res = await octokit.rest.repos.listCollaborators({
 		owner: usuario,
 		repo: repositorio,
@@ -61,8 +61,7 @@ async function obtenerColaboradoresRepo(repositorio, usuario) {
 	return salida;
 }
 
-
-async function obtenerCommitsRepo(repositorio, usuario) {
+async function getCommitsRepo(repositorio, usuario) {
 	var res = await octokit.rest.repos.listCommits({
 		owner: usuario,
 		repo: repositorio,
@@ -72,38 +71,14 @@ async function obtenerCommitsRepo(repositorio, usuario) {
 		salida.push({ "author": element.commit.author.name, "date": element.commit.author.date });
 
 	})
-	//mostrarCommitsRepo(res);
+
 	return salida;
 }
 
-obtenerCommitsRepo("Ejemplo1", "JuanpeTFG")
-function mostrarNombresRepos(repos) {
 
-	repos.data.forEach(element => {//para cada repo procesamos los commits
-		obtenerCommitsRepo(element.name, element.owner.login);
-	});
+getReposUsuario("JuanPedroMartinez").then(sal => console.log(sal))
 
-
-}
-
-function mostrarCommitsRepo(commits) {
-	commits.data.forEach(element => {
-		console.log(element.commit.author.name);
-		console.log(element.commit.author.date)
-	});
-
-
-}
-
-//response =   obtenerUsuario(user).then(val => console.log(val));
-//obtenerReposUsuario(user);
-
-
-
-
-
-
-//rutas de acceso.
+//RUTAS DE ACCESO
 
 // http://localhost:3000/
 app.get('/', function (request, response) {
@@ -129,7 +104,7 @@ app.post('/auth', function (request, response) {
 				request.session.loggedin = true;
 				request.session.username = username;
 				// Redirect to home page
-				response.redirect('/home');
+				response.redirect('/misRepos');
 			} else {
 				response.send('Incorrect Username and/or Password!');
 			}
@@ -163,7 +138,7 @@ app.post('/register', function (request, response) {
 					if (error) throw error;
 					request.session.loggedin = true;
 					request.session.username = username;
-					response.redirect("/home");
+					response.redirect("/misRepos");
 				});
 			}
 
@@ -188,20 +163,33 @@ app.get('/home', function (request, response) {
 	}
 });
 
+app.get('/misRepos', function (request, response) {
+	// If the user is loggedin
+	if (request.session.loggedin) {
+		//recuperamos los datos de github.
+
+
+		response.sendFile(path.join(__dirname + '/misRepos.html'));
+	} else {
+		// Not logged in
+		response.send('Please login to view this page!');
+	}
+});
+
 app.get('/registro', function (request, response) {
 	response.sendFile(path.join(__dirname + '/registro.html'));
 });
 
 app.get('/data', function (request, response) {
 	if (request.query.datos == "repos") {
-		obtenerReposUsuario(request.session.username).then(resu => response.send(resu));
+		getReposUsuario(request.session.username).then(resu => response.send(resu));
 
 	}
 	if (request.query.datos == "commits") {
-		obtenerCommitsRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
+		getCommitsRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
 	}
 	if (request.query.datos == "collaborators") {
-		obtenerColaboradoresRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
+		getColaboradoresRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
 	}
 
 });
