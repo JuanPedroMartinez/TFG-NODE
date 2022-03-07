@@ -1,4 +1,3 @@
-
 html {
 
     font-family: 'Open Sans', sans-serif;
@@ -8,30 +7,112 @@ html {
     background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
     background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
     background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
-    background-attachment:fixed;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
+    background-attachment: fixed;
 }
-body{
+
+body {
     height: 100vh;
 }
 
+/* css para la barra de navegacion. */
+.navbar {
+    background-color: #212529;
+}
+
+
+/* css para el buscador y filtros. */
+
+.buscador{
+
+    border-radius:10px;
+
+}
+
+.buscador .form-inline .form-control{
+    width: 80%;
+}
+/* css para la tabla de reposotorios. */
+
 .container {
     height: 80vh;
+
+}
+
+.tablaRepos {
+
+    margin-top: 20px;
+    margin-bottom: 100px;
+    max-height: 60vh;
    
 }
 
-.tablaRepos{
-
-    margin-top:29vh;
-    box-shadow: 6px 3px 15px 3px rgba(0,0,0,0.62)
+.repos.table {
+    margin: 0;
 }
 
-.repos.table{
-    margin:0;
+.repos th {
+    text-align: center;
 }
-.repos th{
-    text-align:center;
+
+.repos td {
+    text-align: center;
 }
-.repos td{
-    text-align:center;
+
+.repos .btn-copiar {
+    background-color: #900C3F;
+    border-color: #900C3F;
+}
+
+#tablaRepos tr:hover {
+    background-color: #D7D7D7;
+}
+
+.thead-dark th {
+    position: sticky;
+    top: 0;
+}
+
+/* modificamos el scroller de la tabla. */
+
+.scroll {
+    height: 300px;
+    width: 40px;
+    overflow-y: scroll;
+    display: inline-block;
+}
+
+.inner {
+    height: 300%;
+    width: 100%;
+    content: '.';
+}
+
+
+.tablaRepos {
+    background-color: white;
+    background: linear-gradient(left, #99a, #eee, #99a);
+}
+
+.tablaRepos::-webkit-scrollbar {
+    width: 13px;
+    height: 6px;
+}
+
+.tablaRepos::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.tablaRepos::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tablaRepos::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.tablaRepos::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, .9);
 }

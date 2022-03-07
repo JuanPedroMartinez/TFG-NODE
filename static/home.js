@@ -68,7 +68,10 @@ const myChart2 = new Chart(barChart2, {
 //ojo con las rutas en caso de no estar en localhost, puede cambiar el funcionamiento
 //https://stackoverflow.com/questions/1034621/get-the-current-url-with-javascript
 async function getColaboradores() {
-    var aux = await fetch(window.location.protocol + "/data?datos=commits&repo=TDS2122-31-AppVideo")
+    var params = new URLSearchParams(window.location.search)
+    var repo = params.get("repo");
+    var owner = params.get("owner");
+    var aux = await fetch(window.location.protocol + "/data?datos=commits&repo="+repo+ "&owner=" + owner)
     return await aux.json();
 
 }

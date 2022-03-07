@@ -41,7 +41,6 @@ async function getReposUsuario(usuario) {
 
 		type: "all",
 	})
-	console.log(res)
 	var salida = [];
 	res.data.forEach(element => {
 		salida.push({ "repo": element.name, "owner": element.owner.login, "url": element.clone_url});
@@ -76,7 +75,6 @@ async function getCommitsRepo(repositorio, usuario) {
 }
 
 
-getReposUsuario("JuanPedroMartinez").then(sal => console.log(sal))
 
 //RUTAS DE ACCESO
 
@@ -186,7 +184,7 @@ app.get('/data', function (request, response) {
 
 	}
 	if (request.query.datos == "commits") {
-		getCommitsRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
+		getCommitsRepo(request.query.repo, request.query.owner).then(resu => response.send(resu))
 	}
 	if (request.query.datos == "collaborators") {
 		getColaboradoresRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
