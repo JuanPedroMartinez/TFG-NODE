@@ -6,17 +6,19 @@ const path = require('path');
 const { response } = require("express");
 
 const connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
+	host: process.env.MYSQL_HOST,
+	user: 'user',
 	password: 'root',
 	database: 'nodelogin'
 });
+
 
 function callback() {
 	return true;
 }
 const app = express();
 
+console.log("hahahahfñalsdfhjk" + process.env.MYSQL_HOST)
 
 app.use(session({
 	secret: 'secret',
