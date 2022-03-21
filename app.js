@@ -18,7 +18,6 @@ function callback() {
 }
 const app = express();
 
-console.log("hahahahfñalsdfhjk" + process.env.MYSQL_HOST)
 
 app.use(session({
 	secret: 'secret',

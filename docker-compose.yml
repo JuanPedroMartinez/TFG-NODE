@@ -36,6 +36,5 @@ services:
       # Where our data will be persisted
     
     volumes:
-      
-      - ../init:/docker-entrypoint-initdb.d
+      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
 
