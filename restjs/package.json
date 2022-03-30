@@ -1,0 +1,15 @@
+{
+  "name": "tfg-rest",
+  "version": "1.0.0",
+  "description": "Servidor para atender y resolver las peticiones a la api rest de GitHub",
+  "main": "app2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Pedro Martinez Moyano",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "octokit": "^1.7.1"
+  }
+}

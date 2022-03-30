@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const { response } = require("express");
+const axios = require('axios').default;
 
 const connection = mysql.createConnection({
 	host: process.env.MYSQL_HOST,
@@ -44,7 +45,7 @@ async function getReposUsuario(usuario) {
 	})
 	var salida = [];
 	res.data.forEach(element => {
-		salida.push({ "repo": element.name, "owner": element.owner.login, "url": element.clone_url});
+		salida.push({ "repo": element.name, "owner": element.owner.login, "url": element.clone_url });
 	})
 	return salida;
 }
@@ -181,14 +182,44 @@ app.get('/registro', function (request, response) {
 
 app.get('/data', function (request, response) {
 	if (request.query.datos == "repos") {
-		getReposUsuario(request.session.username).then(resu => response.send(resu));
+	
+
+		axios({
+			method: 'get',
+			url: "http://"+ process.env.PROXY_REST+ ":3001/repos",
+			data: {
+				token:"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"
+			}
+		}).then(res => response.send(res.data)).catch(err => console.log(err))
+
+	
+
+		//getReposUsuario(request.session.username).then(resu => response.send(resu));
 
 	}
 	if (request.query.datos == "commits") {
-		getCommitsRepo(request.query.repo, request.query.owner).then(resu => response.send(resu))
+
+		axios({
+			method: 'get',
+			url: "http://"+ process.env.PROXY_REST+ ":3001/commits?repo="+ request.query.repo
+						+ "&owner=" + request.query.owner,
+			data: {
+				token:"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"
+			}
+		}).then(res => response.send(res.data)).catch(err => console.log(err))
+	//	getCommitsRepo(request.query.repo, request.query.owner).then(resu => response.send(resu))
 	}
 	if (request.query.datos == "collaborators") {
-		getColaboradoresRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
+		axios({
+			method: 'get',
+			url: "http://"+ process.env.PROXY_REST+ ":3001/commits?repo="+ request.query.repo
+						+ "&owner=" + request.query.owner,
+			data: {
+				token:"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"
+			}
+		}).then(res => response.send(res.data)).catch(err => console.log(err))
+
+		//getColaboradoresRepo(request.query.repo, request.session.username).then(resu => response.send(resu))
 	}
 
 });

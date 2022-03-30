@@ -113,10 +113,10 @@ async function modificarGrafico2(entrada) {
     myChart2.update();
 }
 
-async function modificarGrafico1() {
-    res = await getColaboradores();
+async function modificarGrafico1(entrada) {
+ 
 
-    res.forEach(element => {
+    entrada.forEach(element => {
         autor = element.author;
         date = (parseInt(element.date.substring(5, 7)) - 1 + 4) % 12;//tomamos unicamente el mes de la fecha.
         console.log(date);
