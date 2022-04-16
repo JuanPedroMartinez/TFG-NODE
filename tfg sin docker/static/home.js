@@ -207,11 +207,11 @@ document.getElementById("accordionExample").addEventListener("show.bs.collapse",
     sha = e.target.id.split("collapse")[1]
     consultaCommit(sha).then( respuesta =>{
         //insertamos la respuesta con el patch del commit en el interior del acordeon.
-        document.querySelector("#collapse"+sha + " .accordion-body").innerHTML = respuesta
+        document.querySelector("#collapse"+sha + " .accordion-body").innerHTML = "<pre>"+respuesta+"</pre>"
     })
     console.log(e.target.id.split("collapse")[1])
 })
 
-consultaCommit("8b55f0f9128fe4147a875dc8bd528635dbad124d").then(res =>console.log(res))
+
 
 inicializarGraficos();

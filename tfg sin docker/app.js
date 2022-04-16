@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const { response } = require("express");
+const moduloAsignaturas = require("./modules/Asignaturas.js");
 
 const connection = mysql.createConnection({
 	host: 'localhost',
@@ -81,7 +82,7 @@ async function getPatch(repositorio, usuario, referencia){
 		ref: referencia
 	  })
 
-	var salida;
+	var salida="";
 	res.data.files.forEach(element => {
 		salida+= element.filename
 		salida+="\n"
@@ -89,7 +90,7 @@ async function getPatch(repositorio, usuario, referencia){
 		salida+= "\n\n\n"
 	});
 
-	console.log(salida)
+
 	return salida;
 }
 
@@ -165,6 +166,14 @@ app.post('/register', function (request, response) {
 
 	}
 });
+//metodo post para añadir una asingatura.
+app.post('/addAsignatura', function (request, response) {
+	var asignatura = request.body.asignatura;
+	var cadenaCoindicencia = request.body.cadenacoincidencia;
+
+	moduloAsignaturas.nuevaAsignatura(connection, asignatura, cadenaCoindicencia, request.session.username)
+	response.redirect("/misRepos")
+});
 
 // http://localhost:3000/home
 app.get('/home', function (request, response) {
@@ -212,9 +221,15 @@ app.get('/data', function (request, response) {
 		getPatch(request.query.repo, request.query.owner, request.query.sha).then(resu => response.send(resu))
 	}
 
+
 });
 //getCommitsRepo("TDS2122-31-AppVideo", "JuanPedroMartinez").then(res =>console.log(res))
 
-getPatch("TDS2122-31-AppVideo", "JuanPedroMartinez","7ddc67c1d5edbf636f1ae5025ffa23312ac3e572").then(res =>console.log(res))
+
+
+//console.log(moduloAsignaturas.getAsignaturas(connection))
+
+moduloAsignaturas.getAsignaturas(connection).then(res => console.log(res))
+
 
 app.listen(3000);

@@ -27,7 +27,10 @@ getRepositoriosUsuario().then((repos) => {//recuperamos los repositorios
             '<button id="copy" type="button" class="btn-copiar mx-3 btn btn-info"><i class="bi bi-clipboard"></i></button>';
 
         //añadimos el evento para llevarnos a la estadisticas de un repositorio al hacer click en alguna de las filas.
-        fila.onclick = () =>{
+        fila.cells[0].onclick = () =>{
+            window.location.href = window.location.protocol + "/home?repo="+repo.repo+"&owner="+repo.owner;
+        }
+        fila.cells[1].onclick = () =>{
             window.location.href = window.location.protocol + "/home?repo="+repo.repo+"&owner="+repo.owner;
         }
         //añadimos los eventos de click de los botones.
@@ -48,6 +51,7 @@ getRepositoriosUsuario().then((repos) => {//recuperamos los repositorios
 
 
 //control de las busquedas y filtrados de los repositorios.
+
 
 
 
