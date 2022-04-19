@@ -12,7 +12,14 @@ html {
     background-attachment: fixed;
 }
 
+/* barra de navegacion */
+.dropdown-menu{
+    height: 130px;
+    
+}
 
+
+/* content */
 body {
     height: 100vh;
 }

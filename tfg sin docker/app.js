@@ -4,7 +4,9 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const { response } = require("express");
-const moduloAsignaturas = require("./modules/Asignaturas.js");
+const moduloAsignaturas = require("./modules/MYSQLasignaturas.js");
+const {Asignatura} = require("./modules/Asignatura.js")
+
 
 const connection = mysql.createConnection({
 	host: 'localhost',
@@ -227,9 +229,7 @@ app.get('/data', function (request, response) {
 
 
 
-//console.log(moduloAsignaturas.getAsignaturas(connection))
-
-moduloAsignaturas.getAsignaturas(connection).then(res => console.log(res))
+moduloAsignaturas.bbddToAsignaturasMapeado(connection,"JuanPedroMartinez").then(resu => console.log(resu))
 
 
 app.listen(3000);

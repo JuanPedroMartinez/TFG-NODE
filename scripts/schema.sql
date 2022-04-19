@@ -18,6 +18,12 @@ CREATE TABLE  IF NOT EXISTS asignaturas (
   FOREIGN KEY(cuenta) REFERENCES accounts(username)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE IF NOT EXISTS repositorios(
+  id     int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  nombre   VARCHAR(50) NOT NULL, 
+  autor VARCHAR(50) NOT NULL,
+  id_asignatura    int(11) NOT NULL,
+  FOREIGN KEY(id_asignatura) REFERENCES asignaturas(id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES (1, 'test', 'test', 'test@test.com');

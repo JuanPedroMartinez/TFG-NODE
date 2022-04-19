@@ -19,49 +19,20 @@
 <body class="bg-transparent">
 
     <nav class="navbar navbar-expand-md navbar-dark   ">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Mis asignaturas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-
-    <main class="container max-width-sm  ">
-
-        <div class="buscador my-5  row max-width-sm ">
-            <div class="col-sm-7">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="col-sm">
-                <input type="text" class="form-control" placeholder="State" aria-label="State">
-
+                <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                    <option selected>Elegir asignatura</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                  </select>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Añadir Asignatura
@@ -83,23 +54,64 @@
 
                                 <form action="/addAsignatura" method="post">
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Nombre</label>
-                                      <input type="text" class="form-control" name="asignatura" >
+                                        <label for="exampleInputEmail1">Nombre</label>
+                                        <input type="text" class="form-control" name="asignatura">
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputPassword1">Cadena coincidencia para repositorios</label>
-                                      <input type="text" class="form-control" name="cadenacoincidencia">                        
-                                      <small id="cadenaHelp" class="form-text text-muted">Esta cadena debe estar contenida en el nombre de los repositorios de los alumnos.</small>
+                                        <label for="exampleInputPassword1">Cadena coincidencia para repositorios</label>
+                                        <input type="text" class="form-control" name="cadenacoincidencia">
+                                        <small id="cadenaHelp" class="form-text text-muted">Esta cadena debe estar
+                                            contenida en el nombre de los repositorios de los alumnos.</small>
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary" >Añadir</button>
-                                  </form>
+                                    <button type="submit" class="btn btn-primary">Añadir</button>
+                                </form>
 
                             </div>
-                       
+
                         </div>
                     </div>
                 </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+
+                    <div class="dropdown-menu overflow-auto" aria-labelledby="dropdown01">
+                        <div id="menu-dropdown" class="">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+
+        </div>
+    </nav>
+
+    <main class="container max-width-sm  ">
+
+        <div class="buscador my-5  row max-width-sm ">
+            <div class="col-sm-7">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <input type="text" class="form-control" placeholder="State" aria-label="State">
+
+
             </div>
             <div class="col-sm">
                 <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
