@@ -72,34 +72,23 @@ async function getRepositoriosAsignatura(connection, idAsignatura) {
 
 
 /* METODO PARA OBTENER UN OBJETO ASIGNATURA TRAS RECUPERAR LOS DATOS DE LA BBDD */
+
 async function bbddToAsignaturasMapeado(connection, cuenta) {
 
-    var promise = new Promise(function (resolve, reject){
-        var asignaturas = new Array();
-        contador =0;
-        getAsignaturasUsuario(connection, cuenta).then(result => {//asignaturas cuenta
-            result.forEach(element => {
-                //creamos la asignatura 
-                var asign = new Asignatura(element.id, element.nombre, element.cadenaCoindicencias, element.cuenta, null)
-                //recupearmos los repositorios de la asignatura y los añadimos al objeto.
-               /*  var reposAsign = getRepositoriosAsignatura(connection, asign.id).then(res => {
-                    asign.repositorios = new Array()//creamos el array de repositorios de la asignatura
-                    res.forEach(repo => {//para cada repositorio lo añadimos al array
-                        asign.repositorios.push({ id: repo.id, nombre: repo.nombre, autor: repo.autor })
-                    }); */
-                   
-                    asignaturas.push(asign)//añadimos la asignatura al array que retornaremos.
-                 
-                    
-                   
-                })
-                resolve(asignaturas)
-    })
-    })
-   
-  return promise
+    salida = new Array(); //array para devolver las asignaturas.
+    //recuperamos las asingaturas del usuario 
+    var asignaturas = await getAsignaturasUsuario(connection, cuenta);
+    for (var element of asignaturas) {
+        repositorios = await getRepositoriosAsignatura(connection, element.id)
+        salida.push(new Asignatura(element.id, element.nombre, element.cadenaCoindicencias, element.cuenta, repositorios))
+    }
+
+    
+ 
+return salida
+
 }
-   
+
 
 
 exports.nuevaAsignatura = nuevaAsignatura;
