@@ -78,12 +78,12 @@ async function bbddToAsignaturasMapeado(connection, cuenta) {
     salida = new Array(); //array para devolver las asignaturas.
     //recuperamos las asingaturas del usuario 
     var asignaturas = await getAsignaturasUsuario(connection, cuenta);
+    console.log(asignaturas);
     for (var element of asignaturas) {
         repositorios = await getRepositoriosAsignatura(connection, element.id)
-        salida.push(new Asignatura(element.id, element.nombre, element.cadenaCoindicencias, element.cuenta, repositorios))
+        salida.push(new Asignatura(element.id, element.nombre, element.cadena_coincidencias, element.cuenta, repositorios))
     }
-
-    
+  
  
 return salida
 

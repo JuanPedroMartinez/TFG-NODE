@@ -123,6 +123,7 @@ app.post('/auth', function (request, response) {
 				// Authenticate the user
 				request.session.loggedin = true;
 				request.session.username = username;
+				
 				// Redirect to home page
 				response.redirect('/misRepos');
 			} else {
@@ -221,6 +222,9 @@ app.get('/data', function (request, response) {
 	}
 	if (request.query.datos == "patch") {
 		getPatch(request.query.repo, request.query.owner, request.query.sha).then(resu => response.send(resu))
+	}
+	if (request.query.datos == "asignaturas") {
+		moduloAsignaturas.bbddToAsignaturasMapeado(connection, request.session.username).then(resu => response.send(resu))
 	}
 
 

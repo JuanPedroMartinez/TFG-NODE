@@ -1,5 +1,6 @@
 
 
+
 //hago la peticion para obtener los repositorios del 
 const tabla = document.getElementById("tablaRepos");
 
@@ -9,6 +10,28 @@ async function getRepositoriosUsuario() {
 
 }
 
+async function getAsignaturasUsuario() {
+    var aux = await fetch(window.location.protocol + "/data?datos=asignaturas")
+    return await aux.json();
+
+}
+
+//recuperamos las asignaturas del usuario y las colocamos en el selector.
+
+getAsignaturasUsuario().then(result => {
+  
+    //almacenamos los datos recuperados en la session del usuario.
+    sessionStorage.setItem('asignaturas', JSON.stringify(result));
+    selector = document.querySelector("#selectorAsignatura")
+    contador =0;
+    result.forEach(asignatura => {
+        selector.innerHTML += "<option value="+contador+">"+asignatura.nombre+"</option>";
+        contador++;
+    });
+})
+
+
+//construccion de la tabla de repòsitorios.
 getRepositoriosUsuario().then((repos) => {//recuperamos los repositorios 
 
 
@@ -50,11 +73,33 @@ getRepositoriosUsuario().then((repos) => {//recuperamos los repositorios
 });
 
 
-//control de las busquedas y filtrados de los repositorios.
+//una vez el documento esta cargado añadimos el evento de seleccion de asignatura.
+window.onload = () => {
+    document.querySelector("#selectorAsignatura").addEventListener("change", (e) => {
+        asignaturaSeleccionada = JSON.parse(sessionStorage.getItem("asignaturas"))[e.target.value]
+        console.log(asignaturaSeleccionada)
+        document.getElementById("buscador").value = asignaturaSeleccionada.cadenaCoindicencias;
+        filtrarRepositorios(asignaturaSeleccionada.cadenaCoindicencias);
+    })
+}
 
 
 
+//funcion para el filtrado de la tabla al buscar o seleccionar asignaturas.
 
+function filtrarRepositorios(cadenaFiltrado){
+
+for(var i=1; i<tabla.rows.length; i++){
+    nombreRepositorio = tabla.rows[i].cells[0].textContent
+     if(!nombreRepositorio.includes(cadenaFiltrado)) // las filas cuyo nombre no contienen la cadena, se ocultan.
+    { 
+        tabla.rows[i].style = "display:none;"
+    }
+    else{
+        tabla.rows[i].removeAttribute("style")
+    } 
+}
+}
 
 
 
