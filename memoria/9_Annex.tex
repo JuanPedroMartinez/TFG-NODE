@@ -1,0 +1,60 @@
+\chapter{Clases Java Bean\label{09javaBean}}
+
+Las clases Java Bean es un estándar que hace referencia a la definición de clases de negocio con unos requisitos en concreto 3:
+
+\begin{enumerate}
+  \item \textbf{Getters y Setters de atributos privados}: Las clases java Bean deben almacenar todos sus atributos de forma privada. Para poder acceder a sus datos y modificarlos contendrán funciones Getters y Setters. Las funciones Getters y Setters son funciones que devuelven o modifican el valor de un atributo. Además estas funciones se deben construir con la nomenclatura de get o set seguido del atributo que se desee en camelCase, es decir con la primera letra del atributo en mayúscula. Por ejemplo, para un atributo llamado nombre sus métodos get y set se llamarían `getNombre' y `setNombre'.
+  \item \textbf{Constructor por defecto}: Es necesario que exista un constructor sin parámetros y con visibilidad pública para poder instanciar el objeto vacío.
+  \item \textbf{Implementar Serializable}: Las clases Bean deben implementar la clase Serializable. El interfaz Serializable es un interfaz de marca que no contiene ningún método pero que permite que los objetos sean serializables a disco o a red.
+\end{enumerate}
+
+\begin{lstlisting}[language=java]
+  public class Mueble implements Serializable {
+    private Color color;
+    private String nombre;
+    private int patas;
+
+    public Mueble() {
+
+    }
+
+    public Color getColor() {
+      return color;
+    }
+
+    public void setColor(Color color) {
+      this.color = color;
+    }
+
+    public String getNombre() {
+      return nombre;
+    }
+
+    public void setNombre(String nombre) {
+      this.nombre = nombre;
+    }
+
+    public int getPatas() {
+      return patas;
+    }
+
+    public void setPatas(int patas) {
+      this.patas = patas;
+    }
+  }
+\end{lstlisting}
+
+En esta clase de ejemplo se crea una clase Java Bean llamada Mesa con tres atributos. El código escrito anteriormente es el mínimo necesario pero sería posible seguir completando la clase con nuevos atributos, funciones o constructores.
+
+Gracias a esto las clases pueden ser gestionadas por diferentes librerías que gestionan la creación, gestión y guardado de objetos por medio de sus clases Bean. Un ejemplo de ellos es jackson una popular librería capaz de almacenar objetos de clases Bean y serializarlos en formato XML, CSV o JSON.
+
+
+
+%%% Local variables:
+%%% TeX-master: "memoria.tex"
+%%% coding: utf-8
+%%% ispell-local-dictionary: "spanish"
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% fill-column: 75
+%%% End:
