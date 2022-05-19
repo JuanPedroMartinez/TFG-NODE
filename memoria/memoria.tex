@@ -1,4 +1,5 @@
 \documentclass[spanish,11pt,twoside]{scrbook}
+\usepackage[colorlinks=false,naturalnames,pdfborder={0 0 0},breaklinks=true]{hyperref}
 \usepackage{geometry}
 \usepackage{booktabs}
 \usepackage[spanish,es-tabla,es-noindentfirst]{babel}
@@ -8,7 +9,6 @@
 \usepackage{scrhack}
 \usepackage[formats]{listings}
 \usepackage{bookmark}
-%\usepackage[colorlinks=false,naturalnames,pdfborder={0 0 0},breaklinks=true]{hyperref}
 %\usepackage{pdfpages}
 \usepackage{floatrow}
 \usepackage[export]{adjustbox}
@@ -28,10 +28,19 @@
   backref
 }
 
-\def\bf{\normalfont\bfseries}
-\def\sc{\scshape}
-\def\sf{\sffamily}
-\def\tt{\ttfamily}
+% \def\bf{\normalfont\bfseries}
+% \def\sc{\scshape}
+% \def\sf{\sffamily}
+% \def\tt{\ttfamily}
+\makeatletter
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
 
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
@@ -47,8 +56,8 @@ identifierstyle=\color{black},
 sensitive=false,
 comment=[l]{//},
 morecomment=[s]{/*}{*/},
-commentstyle=\color{purple}\myttfont,
-stringstyle=\color{red}\myttfont,
+commentstyle=\color{purple}\ttfamily,
+stringstyle=\color{red}\ttfamily,
 morestring=[b]',
 morestring=[b]"
 }
@@ -57,7 +66,7 @@ morestring=[b]"
 {
 language=JavaScript,
 extendedchars=true,
-basicstyle=\scriptsize\myttfont,
+basicstyle=\scriptsize\ttfamily,
 showstringspaces=false,
 showspaces=false,
 numbers=left,
@@ -70,7 +79,7 @@ captionpos=b
 }
 
 \lstset{language=Java,
-basicstyle=\scriptsize\myttfont,
+basicstyle=\scriptsize\ttfamily,
 breaklines=true,
 frame=tb,
 extendedchars=true,
@@ -107,11 +116,11 @@ literate={«}{{\guillemotleft}}1
 
 % \newfontface\myfont{Advent Pro}
 % \newfontface\myfont{Josefin Sans Std}
-\newfontface\myfont{Hero Light}[Path=fonts/]
+\newfontface\myfont{Hero Light}[Path=./]
 
-%\newfontface\myttfont{Inconsolata-Regular.ttf}
-\newfontfamily{\myttfont}%
-[Path=fonts/,
+%\newfontface\ttfamily{Inconsolata-Regular.ttf}
+\newfontfamily{\myttfamily}%
+[Path=./fonts/,
 Ligatures=TeX, % recommended
 AutoFakeSlant, % Inconsolata no tiene italics
   BoldItalicFeatures={FakeSlant},
@@ -124,7 +133,7 @@ AutoFakeSlant, % Inconsolata no tiene italics
 
 
 \lstset{
-basicstyle=\scriptsize\myttfont,
+basicstyle=\scriptsize\ttfamily,
 breaklines=true,
 frame=tb
 }
@@ -146,8 +155,8 @@ frame=tb
 \thispagestyle{empty}
 \sloppy
 
-%\setmonofont{Inconsolata-Regular.ttf}[Scale=MatchLowercase]
-\setmonofont{fonts/Inconsolata-Regular.ttf}
+\setmonofont{Inconsolata-Regular.ttf}[Path=./fonts/,Scale=MatchLowercase]
+%\setmonofont{fonts/Inconsolata-Regular.ttf}
 
 \newgeometry{margin=1in}
 \begin{titlepage}
