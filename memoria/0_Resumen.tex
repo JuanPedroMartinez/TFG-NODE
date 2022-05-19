@@ -1,48 +1,186 @@
-\chapter*{Declaración firmada sobre originalidad del
-  trabajo\label{cap:orginalidad}}
-\addcontentsline{toc}{chapter}{Declaración firmada sobre originalidad del
-  trabajo}
-
-De acuerdo al Reglamento que regula los trabajos fin de grado en la
-Universidad de Murcia, DECLARO que asumo la originalidad del trabajo
-presentado y que todas las fuentes utilizadas han sido debidamente citadas.
-
-\vspace{10em}
-
-\begin{raggedleft}
-Murcia, 7 de septiembre de 2021\\
-
-Nombre y firma\\
-
-Firmado Óscar Hernández Navarro\\
-
-%\begin{figure}[H]
-%\includegraphics[width=0.3\textwidth,right]{img/sign}
-%\end{figure}
 \end{raggedleft}
 
 \chapter*{Extended Abstract\label{00Abstractsummary}}
-With the arrival of Web 2.0, large companies were in need of expanding their services due to the great information traffic that began to generate, because of this nosql databases were born. Databases whose initial purpose was to provide horizontal scalability to these services and replace the old relational databases.
+Nowadays, Git is by far the most widely used modern version control system
+in the world. Version control is a system that records changes to a
+file or set of files over time so that you can recall specific versions
+later. Git is a mature and actively maintained open source project, with
+tons of developers behind it. Originated and launched in 2005, by the
+creator of the Kernel of Linux systems, Linus Torvalds, has become a
+crucial tool for the development teams, bringing them better performance,
+flexibility, and security for their projects.
 
-These databases were implemented by large computer companies in the world and each time they emerged more. They began to be used in areas such as academic research, Machine Learning and other computational sciences due to their flexibility and availability.
+Some of the reasons that make this tool so widely used may
+be,~(i)~Teamwork, allowing parallel development on a project with a shared
+access.~(ii)~Autonomy, each developer, has a full local copy of the project
+and the changes generated on it, which let developers work
+individually.~(iii)~Speed, Git need less processing requirements and
+management than other version control systems.~(iv)~Tree structure, teams
+can have different branches, on which they can make changes without
+modifying the principal base code, making the testing easier and making
+possible the creation of alternative solutions.~(v)~Scalability and fault
+tolerance, open source, multi platform implementations and community
+support.
 
-They also emerged from the community, and therefore the vast majority are open source and free.
+The rise of this technology has been so great that multiple faculties
+related to software education integrate it into their teaching, using this
+tool and integrating it in the development of the projects to be
+accomplished by their students. When this happens, the students create
+repositories making the teacher a collaborator of them. In that way, the
+teacher has full access to the repository where the students work
+progressively, allowing cooperative work in real time.
 
-However, twenty years later, the necessary tools have not been created in order to manage these databases as well as the relational, that is why many companies continue to use old databases that have a great support behind and tens of years of improvements.
+On the other hand, the teaching staff can later analyze the progression and
+work of the students, checking the changes made in the repository, in such
+a way that they can observe what changes each student has made, how the
+work has been distributed, detect overload of work of some student with
+respect the rest, and much more. In this way, the teacher can offer a rating
+as fair as possible.
 
-One of these essential tools is the generation of pseudoameratory data. This generation is necessary in many aspects. From the comparatives between different Nosql databases until the performance tests passing through the handling of the errors.
-They are also necessary to verify that the built software is suitable for the selected database and vice versa.
+However, for teachers, at time of evaluation, it can be hard to check the
+data offered by their student’s repositories, especially when the number of
+repositories increases. Imagine a professor who teaches different subjects,
+and for each of them the students use different repositories.
+
+Currently, the are some solutions for the problem, such as the stats panels
+of Git service providers, such as GitHub or GitLab. However in case of
+GitHub, these stats can only be consulted on public repositories, to be
+able of check them at private repositories, a premium account is needed
+under a monthly subscription. On the other hand, GitLab stats panel is
+offered for private repositories for free, but access to the changes made
+in the repository cannot be easily visualized together with the stats,
+having to open another page for viewing them, becoming somewhat tedious in
+the case of have many repositories.
+
+These services providers, GitHub and GitLab, also offer payment plans
+dedicated to education, these plans include multiple advantages, being more
+interesting in the case of GitHub, offering a tool designed exclusively for
+education “GitHub ClassRoom”, this tool allows the creation of virtual
+classrooms, where teachers can create templates of projects and share for
+the students, create homeworks for the students which can be self-assessed,
+assign work teams, in addition of have full control of the changed made by
+the students, with multiple statistics and facilities for students
+follow-up, allowing a fast and direct interaction between teachers and
+students.
+
+As we can see, the solutions offered are not entirely effective, the one
+that probably best suits the problem posed is the GitHub Education plan,
+nevertheless, although many subsidies and grants can be requested, the
+service entails a cost for the institution and also the necessary
+management to form the agreement between the institution and GitHub must be
+taken in account. In case of not being able to apply this solution, it
+would have to be the teaching staff, who would have to either get a premium
+account or contract the GitHub services on their own. Or manually inspect
+all the repositories.
+
+For the reasons mentioned previously, we want to develop a software for the
+computer science faculty of the University of Murcia, that allows teachers
+to manage the information of their students' repositories, obtaining
+statistics about them, simplifying their task. This would be a first
+implementation, with lots of room for improvement, with the possibility of
+implementing new features.
+
+In addition, it is intended to offer a useful implementation for deployment
+in a cloud service, in such a way that the services are based on
+containers, which can be launched in a structure of cloud nodes, thus
+allowing their control and scaling.
+
+In order to continue, we must first understand the Git jargon, and some
+relevant definitions related to the developed project. As a glossary, we
+see the following definitions:
+
+\begin{itemize}
+\item Repository: A Git repository tracks and saves the history of all
+  changes made to the files in a Git project. It saves this data in a
+  directory called ``{\tt .git}'', also known as the repository folder. Git
+  uses a version control system to track all changes made to the project
+  and save them in the repository.
+
+\item Commit: In version control systems, a commit is an operation which
+  sends the latest changes of the source code to the repository, making
+  these changes part of the head revision of the repository. Commits in
+  version control systems are kept in the repository indefinitely. Thus,
+  when other users do an update or a checkout from the repository, they
+  will receive the latest committed version.
+
+\item Branch: is the duplication of an object under version control (such
+  as a source code file or a directory tree). Each object can thereafter be
+  modified separately and in parallel so that the objects become different.
+  In this context the objects are called branches. The users of the version
+  control system can branch any branch. Branches allow you to develop
+  features, fix bugs, or safely experiment with new ideas in a contained
+  area of your repository.
+
+\item REST API: A RESTful API is an architectural style for an application
+  program interface (API) that uses HTTP requests to access and use data.
+  That data can be used to GET, PUT, POST and DELETE data types, which
+  refers to the reading, updating, creating, and deleting of operations
+  concerning resources.
+\end{itemize}
+
+Once these concepts are understood, we can begin by explaining the software
+requirements. The proposed solution is based on the development of a web
+application that allows the management of teacher’s repositories. To do
+this, each teacher will make a registration in the application, in which
+they can later add their subjects, being able to filter their repositories
+by matching strings and manually add repositories to their subjects. For
+the registration process, each teacher must have or create an
+authentication token obtained on the official GitHub page,necessary for the
+developed application to access the private repositories of teachers. The
+tool will never make any changes to the repositories or add any information
+to git, it will only need read permissions.
+
+Once the registration is complete, you can access the application and view all the repositories in which you participate as a collaborator on the main page. In addition, a search bar is offered, for filtering the repositories that match a string of characters and filtering by previously created subjects. You can click on any of those displayed to access the repository statistics. Obtaining information about the collaborators of the repository, the total number of commits made by each collaborator, the temporal distribution of the commits, that is, how many commits have been made in each month of the course, and the content of the changes made in the project on every commit. With this information, the teacher can evaluate the performance of the students during the development of the assigned work.
+
+Turning now to the implementation of the software, there were different alternatives, as for the development of the web server, the possibility of using Python with the Flask framework, or using Node JS based on the Express framework. Finally, the decision was to use Node JS given the good integration of the JSON format used by the Github API through which we retrieve the data from the repositories, in addition to the many possibilities that the Express Framework offer for the development of simple API REST.
+
+Regarding the persistence of the data, necessary in this case for the data of both the users and the subjects created, a MySQL implementation is used, since the data to be persisted perfectly adapts to the relational model, and NodeJS offers very good libraries for connection and integration with the database from the server.
+
+Finally, for design reasons, a second server has been implemented, also developed in NodeJS Express, which is in charge of carrying out all the communication with the Github servers, that is, it will be in charge of obtaining all the necessary information from the Github services. In this way, we have:
+
+    The first server, which implements the entire web service, is intended only to receive and respond to web requests from users. This server will also be in charge of communicating with the database and managing it, carrying out registration queries and user creation, as well as managing the subjects. If data from the Github Rest API is necessary, this data is requested from the second server.
+
+    The second server implements a service as a REST API in charge of attending to the requests of the first server and intercommunicating with the GithuB API to obtain the requested data. Therefore, it acts as a proxy for the GitHub service.
+
+
+The reasons for implementing a second server are justified by assigning only the web server to users and not overloading it with requests to another external service, thus reducing its workload and improving response times.
+
+On the other hand, for the communication of the two servers, the second server is implemented as a REST API, where it receives HTTP requests, in this case it only accepts Get requests, the information about what data you want to recover, is received through the url parameters. Once the request is received and processed, the second server communicates with the GIthub API, obtains the corresponding data and responds back to the first server.
+
+
+As a second objective for the project, we want to give support to the services developed in order to facilitate deployment in a cloud service.
+
+To do this, all services must offer a container based implementation, in this case using Docker's container technology, currently, one of the most relevant technologies for this task.
+
+The structure of the application is divided into 3 containers, a dedicated container for the database, which must configure a volume to give persistence to the data in the container, and two different containers for each of the servers implemented in NodeJS.
+
+To make the deployment of these containers easier,a Docker Compose configuration file is provided, which allows us to automatically launch the 3 services, with the specific configurations for each one. It is also prepared to configure an internal subnet used to resolve the communications between the services, that is, the communications between the main server and the MySQL database and the communications between the first and second servers for obtaining Git data.
+
+Regarding the work methodology followed, multiple meetings have been held with the tutor Diego Sevilla, in which the idea of the project has been raised and evolved.
+
+In the first meeting, the development of a tool that tries to solve the problem of analyzing student repositories is planned. Different forms of implementation and technologies to be used are also proposed.
+
+Subsequently, after a period of research on how to retrieve statistics from the
+
+Git servers, in this case Github, a second meeting took place, where it is concisely specified what the architecture of the application will be and the technologies that will be used.
+
+After a period of work, other meetings have been held where the progress made has been reviewed, new application requirements have been proposed and some aspects have been improved.
+
+Successively, there have been multiple consultations throughout the development of the project, both by email and by shorter face-to-face meetings.
+
+Finally, it should be noted that, as it could not be missing, a repository has been used
+
+Private GitHub to share work with tutor and version control.
+
+To conclude, comment that the development of the project has entailed a lot of work, but it has been a very rewarding experience, and key to consolidating technologies that are currently on rise, such as the development of microservices and the collaboration between them to provide solutions for multiple problems, and its subsequent deployment on cloud architectures.
 
 \chapter*{Resumen\label{00summary}}
 \addcontentsline{toc}{chapter}{Resumen}
-
-Resumen...
-
+	@@ -41,7 +203,7 @@ \chapter*{Resumen\label{00summary}}
 %%% Local variables:
 %%% TeX-master: "memoria.tex"
 %%% coding: utf-8
-%%% ispell-local-dictionary: "spanish"
+%%% ispell-local-dictionary: "american"
 %%% TeX-parse-self: t
 %%% TeX-auto-save: t
 %%% fill-column: 75
-%%% End:

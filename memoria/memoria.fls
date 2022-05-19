@@ -2,9 +2,15 @@ PWD /home/juanpe/TFG-NODE/memoria
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+<<<<<<< Updated upstream
 INPUT /var/lib/texmf/web2c/xetex/xelatex.fmt
 INPUT memoria.tex
 OUTPUT memoria.log
+=======
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/juanpe/TFG-NODE/memoria/memoria.tex
+OUTPUT /home/juanpe/TFG-NODE/memoria/memoria.log
+>>>>>>> Stashed changes
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbook.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbook.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -19,6 +25,11 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/tocbasic.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/tocbasic.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+<<<<<<< Updated upstream
+=======
+INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
+>>>>>>> Stashed changes
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/typearea.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/koma-script/typearea.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
@@ -35,7 +46,10 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+<<<<<<< Updated upstream
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/xebabel.def
+=======
+>>>>>>> Stashed changes
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
@@ -45,6 +59,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
+<<<<<<< Updated upstream
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -236,3 +251,5 @@ INPUT memoria.bbl
 INPUT 9_Annex.tex
 INPUT 9_Annex.tex
 INPUT memoria.aux
+=======
+>>>>>>> Stashed changes
