@@ -1,3 +1,4 @@
+#! /usr/bin/env make
 # -*- Makefile -*-
 #
 # $Id$

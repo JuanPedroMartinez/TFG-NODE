@@ -128,49 +128,127 @@ developed application to access the private repositories of teachers. The
 tool will never make any changes to the repositories or add any information
 to git, it will only need read permissions.
 
-Once the registration is complete, you can access the application and view all the repositories in which you participate as a collaborator on the main page. In addition, a search bar is offered, for filtering the repositories that match a string of characters and filtering by previously created subjects. You can click on any of those displayed to access the repository statistics. Obtaining information about the collaborators of the repository, the total number of commits made by each collaborator, the temporal distribution of the commits, that is, how many commits have been made in each month of the course, and the content of the changes made in the project on every commit. With this information, the teacher can evaluate the performance of the students during the development of the assigned work.
+Once the registration is complete, you can access the application and
+view all the repositories in which you participate as a collaborator
+on the main page. In addition, a search bar is offered, for filtering
+the repositories that match a string of characters and filtering by
+previously created subjects. You can click on any of those displayed
+to access the repository statistics. Obtaining information about the
+collaborators of the repository, the total number of commits made by
+each collaborator, the temporal distribution of the commits, that is,
+how many commits have been made in each month of the course, and the
+content of the changes made in the project on every commit. With this
+information, the teacher can evaluate the performance of the students
+during the development of the assigned work.
 
-Turning now to the implementation of the software, there were different alternatives, as for the development of the web server, the possibility of using Python with the Flask framework, or using Node JS based on the Express framework. Finally, the decision was to use Node JS given the good integration of the JSON format used by the Github API through which we retrieve the data from the repositories, in addition to the many possibilities that the Express Framework offer for the development of simple API REST.
+Turning now to the implementation of the software, there were
+different alternatives, as for the development of the web server, the
+possibility of using Python with the Flask framework, or using Node JS
+based on the Express framework. Finally, the decision was to use Node
+JS given the good integration of the JSON format used by the Github
+API through which we retrieve the data from the repositories, in
+addition to the many possibilities that the Express Framework offer
+for the development of simple API REST.
 
-Regarding the persistence of the data, necessary in this case for the data of both the users and the subjects created, a MySQL implementation is used, since the data to be persisted perfectly adapts to the relational model, and NodeJS offers very good libraries for connection and integration with the database from the server.
+Regarding the persistence of the data, necessary in this case for the
+data of both the users and the subjects created, a MySQL
+implementation is used, since the data to be persisted perfectly
+adapts to the relational model, and NodeJS offers very good libraries
+for connection and integration with the database from the server.
 
-Finally, for design reasons, a second server has been implemented, also developed in NodeJS Express, which is in charge of carrying out all the communication with the Github servers, that is, it will be in charge of obtaining all the necessary information from the Github services. In this way, we have:
+Finally, for design reasons, a second server has been implemented,
+also developed in NodeJS Express, which is in charge of carrying out
+all the communication with the Github servers, that is, it will be in
+charge of obtaining all the necessary information from the Github
+services. In this way, we have:
 
-    The first server, which implements the entire web service, is intended only to receive and respond to web requests from users. This server will also be in charge of communicating with the database and managing it, carrying out registration queries and user creation, as well as managing the subjects. If data from the Github Rest API is necessary, this data is requested from the second server.
+\begin{itemize}
+\item The first server, which implements the entire web service, is
+  intended only to receive and respond to web requests from users.
+  This server will also be in charge of communicating with the
+  database and managing it, carrying out registration queries and user
+  creation, as well as managing the subjects. If data from the Github
+  Rest API is necessary, this data is requested from the second
+  server.
 
-    The second server implements a service as a REST API in charge of attending to the requests of the first server and intercommunicating with the GithuB API to obtain the requested data. Therefore, it acts as a proxy for the GitHub service.
+\item The second server implements a service as a REST API in charge
+  of attending to the requests of the first server and
+  intercommunicating with the GitHub API to obtain the requested data.
+  Therefore, it acts as a proxy for the GitHub service.
+\end{itemize}
 
+The reasons for implementing a second server are justified by
+assigning only the web server to users and not overloading it with
+requests to another external service, thus reducing its workload and
+improving response times.
 
-The reasons for implementing a second server are justified by assigning only the web server to users and not overloading it with requests to another external service, thus reducing its workload and improving response times.
+On the other hand, for the communication of the two servers, the
+second server is implemented as a REST API, where it receives HTTP
+requests, in this case it only accepts Get requests, the information
+about what data you want to recover, is received through the URL
+parameters. Once the request is received and processed, the second
+server communicates with the GIthub API, obtains the corresponding
+data and responds back to the first server.
 
-On the other hand, for the communication of the two servers, the second server is implemented as a REST API, where it receives HTTP requests, in this case it only accepts Get requests, the information about what data you want to recover, is received through the url parameters. Once the request is received and processed, the second server communicates with the GIthub API, obtains the corresponding data and responds back to the first server.
+As a second objective for the project, we want to give support to the
+services developed in order to facilitate deployment in a cloud
+service.
 
+To do this, all services must offer a container based implementation,
+in this case using Docker container technology, currently, one of
+the most relevant technologies for this task.
 
-As a second objective for the project, we want to give support to the services developed in order to facilitate deployment in a cloud service.
+The structure of the application is divided into~3 containers, a
+dedicated container for the database, which must configure a volume to
+give persistence to the data in the container, and two different
+containers for each of the servers implemented in NodeJS.
 
-To do this, all services must offer a container based implementation, in this case using Docker's container technology, currently, one of the most relevant technologies for this task.
+To make the deployment of these containers easier, a Docker Compose
+configuration file is provided, which allows us to automatically
+launch the~3 services, with the specific configurations for each one.
+It is also prepared to configure an internal subnet used to resolve
+the communications between the services, that is, the communications
+between the main server and the MySQL database and the communications
+between the first and second servers for obtaining Git data.
 
-The structure of the application is divided into 3 containers, a dedicated container for the database, which must configure a volume to give persistence to the data in the container, and two different containers for each of the servers implemented in NodeJS.
+Regarding the work methodology followed, multiple meetings have been
+held with the tutor Diego Sevilla, in which the idea of the project
+has been raised and evolved.
 
-To make the deployment of these containers easier,a Docker Compose configuration file is provided, which allows us to automatically launch the 3 services, with the specific configurations for each one. It is also prepared to configure an internal subnet used to resolve the communications between the services, that is, the communications between the main server and the MySQL database and the communications between the first and second servers for obtaining Git data.
+\hilight{Lo siguiente no me parece bien en el resumen, pero sí que
+  habría que añadir algo así como una conclusión de que finalmente se
+  ha creado lo que se quería, etc.}
 
-Regarding the work methodology followed, multiple meetings have been held with the tutor Diego Sevilla, in which the idea of the project has been raised and evolved.
+% In the first meeting, the development of a tool that tries to solve
+% the problem of analyzing student repositories is planned. Different
+% forms of implementation and technologies to be used are also proposed.
 
-In the first meeting, the development of a tool that tries to solve the problem of analyzing student repositories is planned. Different forms of implementation and technologies to be used are also proposed.
+% Subsequently, after a period of research on how to retrieve statistics
+% from the
 
-Subsequently, after a period of research on how to retrieve statistics from the
+% Git servers, in this case Github, a second meeting took place, where
+% it is concisely specified what the architecture of the application
+% will be and the technologies that will be used.
 
-Git servers, in this case Github, a second meeting took place, where it is concisely specified what the architecture of the application will be and the technologies that will be used.
+% After a period of work, other meetings have been held where the
+% progress made has been reviewed, new application requirements have
+% been proposed and some aspects have been improved.
 
-After a period of work, other meetings have been held where the progress made has been reviewed, new application requirements have been proposed and some aspects have been improved.
+% Successively, there have been multiple consultations throughout the
+% development of the project, both by email and by shorter face-to-face
+% meetings.
 
-Successively, there have been multiple consultations throughout the development of the project, both by email and by shorter face-to-face meetings.
+% Finally, it should be noted that, as it could not be missing, a
+% repository has been used
 
-Finally, it should be noted that, as it could not be missing, a repository has been used
+% Private GitHub to share work with tutor and version control.
 
-Private GitHub to share work with tutor and version control.
-
-To conclude, comment that the development of the project has entailed a lot of work, but it has been a very rewarding experience, and key to consolidating technologies that are currently on rise, such as the development of microservices and the collaboration between them to provide solutions for multiple problems, and its subsequent deployment on cloud architectures.
+% To conclude, comment that the development of the project has entailed
+% a lot of work, but it has been a very rewarding experience, and key to
+% consolidating technologies that are currently on rise, such as the
+% development of microservices and the collaboration between them to
+% provide solutions for multiple problems, and its subsequent deployment
+% on cloud architectures.
 
 \chapter*{Resumen\label{00summary}}
 
