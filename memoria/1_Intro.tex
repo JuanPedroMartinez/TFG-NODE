@@ -1,72 +1,191 @@
 \chapter{Introducción\label{01intro}}
 
-% En los últimos años, el volumen de datos consumidos por muchas organizaciones ha explotado, debido a la explosión de la web, La llamada Web 2.0. 
-% [Añadir fuente$^1$] En 15 de los 17 sectores económicos de los Estados Unidos, las empresas que tienen más de 1000 empleados, almacenan en promedio 
-% más de 235 terabytes de datos que es más que el volumen de la biblioteca de datos del Congreso de los Estados Unidos. 
+% En los últimos años, el volumen de datos consumidos por muchas
+% organizaciones ha explotado, debido a la explosión de la web, La llamada
+% Web 2.0. [Añadir fuente$^1$] En 15 de los 17 sectores económicos de los
+% Estados Unidos, las empresas que tienen más de 1000 empleados, almacenan
+% en promedio más de 235 terabytes de datos que es más que el volumen de la
+% biblioteca de datos del Congreso de los Estados Unidos.
 
-% Debido a la necesidad de escala y/o procesamiento, este volumen de datos ha aumentado y el mundo de las bases de datos creó una nueva técnica de 
-% administración de datos con un modelo de gestión de datos novedoso llamado NoSQL (que significa ``no solo SQL''). Existe una amplia gama de soluciones 
-% NoSQL y, en particular, más de 225.
+% Debido a la necesidad de escala y/o procesamiento, este volumen de datos
+% ha aumentado y el mundo de las bases de datos creó una nueva técnica de
+% administración de datos con un modelo de gestión de datos novedoso
+% llamado NoSQL (que significa ``no solo SQL''). Existe una amplia gama de
+% soluciones NoSQL y, en particular, más de 225.
 
-% Tanto la investigación como la industria está utilizando estos sistemas de almacenamiento de datos a un ritmo muy rápido. En ambas áreas, los datos de 
-% prueba son esenciales para las pruebas de rendimiento, de seguridad y las pruebas funcionales. 
+% Tanto la investigación como la industria está utilizando estos sistemas
+% de almacenamiento de datos a un ritmo muy rápido. En ambas áreas, los
+% datos de prueba son esenciales para las pruebas de rendimiento, de
+% seguridad y las pruebas funcionales.
 
-% Los avances de la comunidad de investigación se usan ampliamente en una gran variedad de dominios de la informática como son privacidad, salud, reconocimiento 
-% de patrones, minería de datos, etc. [Añadir fuente$^2$]
+% Los avances de la comunidad de investigación se usan ampliamente en una
+% gran variedad de dominios de la informática como son privacidad, salud,
+% reconocimiento de patrones, minería de datos, etc. [Añadir fuente$^2$]
 
-% En la actualidad desafortunadamente hay una escasez de disponibilidad de datos reales debido a que muchas organizaciones no están dispuestas a compartir sus 
-% datos con terceros por garantizar la privacidad, el coste de la transferencia de los datos y la falta de disponibilidad de una cantidad enorme de datos. [Añadir fuente$^3$]
-% Por lo tanto, el desarrollo y las pruebas de análisis de software son dependientes de los datos sintéticos que garantizan resultados lo más cercanos a la realidad posible.
+% En la actualidad desafortunadamente hay una escasez de disponibilidad de
+% datos reales debido a que muchas organizaciones no están dispuestas a
+% compartir sus datos con terceros por garantizar la privacidad, el coste
+% de la transferencia de los datos y la falta de disponibilidad de una
+% cantidad enorme de datos. [Añadir fuente$^3$] Por lo tanto, el desarrollo
+% y las pruebas de análisis de software son dependientes de los datos
+% sintéticos que garantizan resultados lo más cercanos a la realidad
+% posible.
 
-Un sistema de control de versiones(VCS, por sus siglas en inglés), es una herramienta o software, que monitoriza y gestiona cambios en un sistema de archivos, es decir, se encarga de la monitorización de la adición, eliminación y modificación aplicadas a archvivos y directorios. El primer sistema de control de versiones, surge en 1990, con el nombre de CVS(Concurrent Version System), capaz de gestionar multiples versiones desarrolladas de forma concurrente en diferentes máquinas y almacenadas en un servidor central. En la actualidad, el sistema de control de versiones mas usado es Git, desarrollado por Linux Torvalds(creador de linux) y lanzado en el 2005,  su creador, buscaba mejorar la eficiencia, confiabilidad y compatibilidad respecto las alternativas existentes, que el mismo criticaba. Este controlador de versiones esta basado en un grafo acíclico dirigido, donde cada nodo representa una entidad susceptible a modificaciones.
+Un sistema de control de versiones (VCS, por sus siglas en inglés), es una
+herramienta o software, que monitoriza y gestiona cambios en un sistema de
+archivos, es decir, se encarga de la monitorización de la adición,
+eliminación y modificación aplicadas a archivos y directorios. El primer
+sistema de control de versiones, surge en 1990, con el nombre de CVS
+({\em Concurrent Version System}), capaz de gestionar multiples versiones
+desarrolladas de forma concurrente en diferentes máquinas y almacenadas en
+un servidor central. En la actualidad, el sistema de control de versiones
+mas usado es Git, desarrollado por Linux Torvalds (creador de linux) y
+lanzado en el 2005, su creador, buscaba mejorar la eficiencia,
+confiabilidad y compatibilidad respecto las alternativas existentes, que el
+mismo criticaba. Este controlador de versiones esta basado en un grafo
+acíclico dirigido, donde cada nodo representa una entidad susceptible a
+modificaciones.
 
-Para Git, un \textit{repositorio} constituye el proyecto que esta bajo el control de versiones, los \textit{commits} constituyen los cambios que van surgiendo sobre el repositorio, y además ofrece la posibilidad de la creación de \textit{ramas}, siendo estas diferentes caminos que puede ir tomando el proyecto, pudiendo combinarlas o descartarlas.
+Para Git, un \textit{repositorio} constituye el proyecto que esta bajo el
+control de versiones, los \textit{commits} constituyen los cambios que van
+surgiendo sobre el repositorio, y además ofrece la posibilidad de la
+creación de \textit{ramas}, siendo estas diferentes caminos que puede ir
+tomando el proyecto, pudiendo combinarlas o descartarlas.
 
 
 
 \section{Motivación\label{01intro_motivacion}}
 
-% En la actualidad el número de Sistemas Gestores de Bases de Datos (de aquí en adelante SGDB) ha aumentado en gran medida, sobre todo en el campo de las bases 
-% de datos NoSQL (según \href{http://db-engines.com}{DB-Engines} de las 354 SGDB listadas 223 son NoSQL). Esto es provocado por la creación de nuevos softwares de almacenamiento 
-% masivo y las facilidades que aportan los almacenamientos noSQL como la supresión de esquemas (schemaless) que hace muy fácil su utilización y versatilidad 
-% en diversos campos.
-Para comprender el impacto que tuvo Git a partir de su creación y los mótivos por los cuales a dia de hoy es la primera opción de casi el 90\% de los desarrolladores, destacaremos algunos de sus principales puntos fuertes, (i) Trabajo en equipo, permite el desarrollo en paralelo sobre un proyecto con un acceso compartido (ii)Autonomía, cada trabajador cuenta con una copia en local de todo el proyecto y los cambios generados, permitiendo el trabajo de forma individual, el cualquier momento. (iii) Velocidad, necesita menos capacidad de procesamiento y gestión al realizar las operaciones en local (iv) Estructura en árbol, el equipo de trabajo puede contar con diferentes ramas, sobre las que se realizan cambios sin modificar el código base principal, facilitando así las pruebas y caminos alternativos en el desarrollo. (v) Escalabilidad, código libre, multiplataforma y apoyo de la comunidad.
+% En la actualidad el número de Sistemas Gestores de Bases de Datos (de
+% aquí en adelante SGDB) ha aumentado en gran medida, sobre todo en el
+% campo de las bases de datos NoSQL (según
+% \href{http://db-engines.com}{DB-Engines} de las 354 SGDB listadas 223 son
+% NoSQL). Esto es provocado por la creación de nuevos softwares de
+% almacenamiento masivo y las facilidades que aportan los almacenamientos
+% noSQL como la supresión de esquemas (schemaless) que hace muy fácil su
+% utilización y versatilidad en diversos campos.
+Para comprender el impacto que tuvo Git a partir de su creación y los
+mótivos por los cuales a dia de hoy es la primera opción de casi el 90\% de
+los desarrolladores, destacaremos algunos de sus principales puntos
+fuertes, (i) Trabajo en equipo, permite el desarrollo en paralelo sobre un
+proyecto con un acceso compartido (ii)Autonomía, cada trabajador cuenta con
+una copia en local de todo el proyecto y los cambios generados, permitiendo
+el trabajo de forma individual, el cualquier momento. (iii) Velocidad,
+necesita menos capacidad de procesamiento y gestión al realizar las
+operaciones en local (iv) Estructura en árbol, el equipo de trabajo puede
+contar con diferentes ramas, sobre las que se realizan cambios sin
+modificar el código base principal, facilitando así las pruebas y caminos
+alternativos en el desarrollo. (v) Escalabilidad, código libre,
+multiplataforma y apoyo de la comunidad.
 
-Es por ello, que Git es una de las herramientas que los alumnos de la facultad de informática de la Universidad de Murcia deben adquirir, conocer y trabajar. Usandose en multiples asignatuaras, para el control de versiones del trabajo de los alumnos, permitiendo la colaboración en los equipos de trabajo. En estos proyectos, el profesorado indica que se debe crear un repositorio, donde tanto los alumnos del equipo de trabajo como el profesor deben ser colaboradores, de esta forma, el profesor tiene acceso pleno al repositorio pudiendo, así valorar el trabajo de los alumnos y analizando como ha sido su progresión durante el desarrollo del proyecto, tanto tiempo dedicado, número de commits por alumno, tiempo que se ha dedicado a la realización del proyecto etc.
+Es por ello, que Git es una de las herramientas que los alumnos de la
+facultad de informática de la Universidad de Murcia deben adquirir, conocer
+y trabajar. Usandose en multiples asignatuaras, para el control de
+versiones del trabajo de los alumnos, permitiendo la colaboración en los
+equipos de trabajo. En estos proyectos, el profesorado indica que se debe
+crear un repositorio, donde tanto los alumnos del equipo de trabajo como el
+profesor deben ser colaboradores, de esta forma, el profesor tiene acceso
+pleno al repositorio pudiendo, así valorar el trabajo de los alumnos y
+analizando como ha sido su progresión durante el desarrollo del proyecto,
+tanto tiempo dedicado, número de commits por alumno, tiempo que se ha
+dedicado a la realización del proyecto etc.
 
-Como se puede apreciar, esta herramienta también es útil de cara a la evaluación por parte del profesorado, sin embargo, surge un problema de gestión de cara al tutor a la hora de gestionar los múltiples repositorios de tdos sus alumnos. Esto es, imaginemos un profesor el cual imparte diferentes asignaturas y sobre las cuales quiere usar repositorios Git para el control de versiones de los proyectos de sus alumnos, suponiendo que cada equipo de alumnos genere su propio repositorio, el tutor se encuentra con una cantidad abrumadora de repositorios sobre la que es colaborador. De cara a cuantificar el trabajo realizado, debe consultar los commits realizados por cada uno, el contenido de los mismos, las fechas sobre las que se han realizado etc, sin embargo, no tiene una forma sencilla con la que poder ver toda esta información simultáneamente y rápidamente.
+Como se puede apreciar, esta herramienta también es útil de cara a la
+evaluación por parte del profesorado, sin embargo, surge un problema de
+gestión de cara al tutor a la hora de gestionar los múltiples repositorios
+de tdos sus alumnos. Esto es, imaginemos un profesor el cual imparte
+diferentes asignaturas y sobre las cuales quiere usar repositorios Git para
+el control de versiones de los proyectos de sus alumnos, suponiendo que
+cada equipo de alumnos genere su propio repositorio, el tutor se encuentra
+con una cantidad abrumadora de repositorios sobre la que es colaborador. De
+cara a cuantificar el trabajo realizado, debe consultar los commits
+realizados por cada uno, el contenido de los mismos, las fechas sobre las
+que se han realizado etc, sin embargo, no tiene una forma sencilla con la
+que poder ver toda esta información simultáneamente y rápidamente.
 
-Se pretende por tanto, proveer al profesorado de una herramienta con la que intentar paliar el problema planteado, es decir, el acceso a estadísticas de los repositorios Git de los alumnos, permitiendo además, gestionar los repositorios sobre los que es colaborador, añadir nuevos repositorios y filtrado de los repositorios. En cuanto a las estadísticas, es de interés el número de commits realizados por cada alumno, la distribución temporal de dichos commits, y además del contenido de los commits (cambios realizados en cada archivo del proyecto, también conocido como \textit{Patch}).
+Se pretende por tanto, proveer al profesorado de una herramienta con la que
+intentar paliar el problema planteado, es decir, el acceso a estadísticas
+de los repositorios Git de los alumnos, permitiendo además, gestionar los
+repositorios sobre los que es colaborador, añadir nuevos repositorios y
+filtrado de los repositorios. En cuanto a las estadísticas, es de interés
+el número de commits realizados por cada alumno, la distribución temporal
+de dichos commits, y además del contenido de los commits (cambios
+realizados en cada archivo del proyecto, también conocido como
+\textit{Patch}).
 
 \section{Objetivos}
 
 El desarrollo del trabajo esta enfocado principalmente:
 \begin{itemize}
-    
-    \item El desarrollo de un software capaz de gestionar estadísticas sobre repositorios Git en los que se participa como colaborador, a. Para su implementación se lleva a cabo el desarrollo de una aplicación web, accediendo el usuario mediante el navegador de preferencia.
 
-    \item Implementación de un esquema de desarrollo basado en una arquitectura de microservicios, es decir, implementación de servicios de no gran tamaño, intercomunicados por API bien definidas, ofrecidos en forma de contendores Docker, ofreciendo una capa de automatización para el despliegue en multiples sistemas operativos, que posteriormente puedan ser llevados a un sistema cloud permitiendo su escalado. 
+\item El desarrollo de un software capaz de gestionar estadísticas sobre
+  repositorios Git en los que se participa como colaborador, a. Para su
+  implementación se lleva a cabo el desarrollo de una aplicación web,
+  accediendo el usuario mediante el navegador de preferencia.
+
+\item Implementación de un esquema de desarrollo basado en una arquitectura
+  de microservicios, es decir, implementación de servicios de no gran
+  tamaño, intercomunicados por API bien definidas, ofrecidos en forma de
+  contendores Docker, ofreciendo una capa de automatización para el
+  despliegue en multiples sistemas operativos, que posteriormente puedan
+  ser llevados a un sistema cloud permitiendo su escalado.
 \end{itemize}
-  
-  
+
+
 \section{Metodología}
 
-Para la realización del trabajo, se han tenido múltiples reuniones con el tutor Diego Sevilla, en las cuales se han ido planteando y evolucionando la idea del proyecto.
+Para la realización del trabajo, se han tenido múltiples reuniones con el
+tutor Diego Sevilla, en las cuales se han ido planteando y evolucionando la
+idea del proyecto.
 
-En primer lugar, el 11 de febrero de 2022 se tuvo una reunión donde el tutor me plantea el problema del análisis de los repositorios de los alumnos, concluyendo para ello el desarrollo de una herramienta que de una solución al problema y tratamos documentación relevante de cara al posterior desarrollo del trabajo.
+En primer lugar, el 11 de febrero de 2022 se tuvo una reunión donde el
+tutor me plantea el problema del análisis de los repositorios de los
+alumnos, concluyendo para ello el desarrollo de una herramienta que de una
+solución al problema y tratamos documentación relevante de cara al
+posterior desarrollo del trabajo.
 
-Posteriormente, tras un periodo de investigación sobre como recuperar estadísticas de los servidores de Git, en este caso Github, se tiene una segunda reunión el día 16 de febrero, donde se plantea, tanto la arquitectura completa y como tecnologías con las que se podría implementar, destacando principalmente un esquema de desarrollo web basado en Phyton con Flask o el uso del framework Express sobre NodeJS con Javascript como lenguaje de principal, finalmente veremos que la alternativa elegida es la segunda, principalmente por la facilidad de integración de javascript con el formato de información JSON, y la fuerte demanda de dicho formato en la aplicación. Además en esta reunión se hace la primera recolecta de requisitos del software a producir. Los detalles de la arquitectura se comentarán en los capítulos siguientes. 
+Posteriormente, tras un periodo de investigación sobre como recuperar
+estadísticas de los servidores de Git, en este caso Github, se tiene una
+segunda reunión el día 16 de febrero, donde se plantea, tanto la
+arquitectura completa y como tecnologías con las que se podría implementar,
+destacando principalmente un esquema de desarrollo web basado en Phyton con
+Flask o el uso del framework Express sobre NodeJS con Javascript como
+lenguaje de principal, finalmente veremos que la alternativa elegida es la
+segunda, principalmente por la facilidad de integración de javascript con
+el formato de información JSON, y la fuerte demanda de dicho formato en la
+aplicación. Además en esta reunión se hace la primera recolecta de
+requisitos del software a producir. Los detalles de la arquitectura se
+comentarán en los capítulos siguientes.
 
-A mediados del mes de marzo, con avances realizados y una previa maquetación a modo de prototipo ya desarrollada se vuelve a tener una reunión, en la que se analizan los avances realizados, se plantea la adición de las estadísticas del contenido de los commits, y principalmente se trata el desarrollo de la aplicación sobre contenedores Docker.
+A mediados del mes de marzo, con avances realizados y una previa
+maquetación a modo de prototipo ya desarrollada se vuelve a tener una
+reunión, en la que se analizan los avances realizados, se plantea la
+adición de las estadísticas del contenido de los commits, y principalmente
+se trata el desarrollo de la aplicación sobre contenedores Docker.
 
-Además de estas reuniones claramente diferenciadas y de larga duración, se han tenido multiples consultas y breves tutorías a lo largo del desarrollo del proyecto, tanto mediante correo electrónico como reuniones presenciales de menor duración.
+Además de estas reuniones claramente diferenciadas y de larga duración, se
+han tenido multiples consultas y breves tutorías a lo largo del desarrollo
+del proyecto, tanto mediante correo electrónico como reuniones presenciales
+de menor duración.
 
-Por último, cabe destacar que, como no podía faltar, se ha utilizado un repositorio GitHub privado para compartir el trabajo con el tutor y el control de versiones.
+Por último, cabe destacar que, como no podía faltar, se ha utilizado un
+repositorio GitHub privado para compartir el trabajo con el tutor y el
+control de versiones.
 
 \section{Estructura del documento}
 
-Este documento se organiza en los siguientes capítulos. El presente capítulo 1 ha
-presentado el contexto, motivación, objetivos y la metodología seguida. El capítulo 2 presenta fundamentos de las bases de datos NoSQL y una Introducción al sistema de gestión de bases de datos NoSQL MongoDB, el capítulo 3 hace un recorrido por las soluciones vigentes que podemos encontrar a día de hoy para motivar la implementación de este trabajo, el capítulo 4 tratará los objetivos del trabajo, tecnologías a utilizar y el marco en el que se encuentra, el capítulo 5 trata de la implementación del generador, su uso, funcionalidad y cómo ha sido construido y por último el capítulo 8 recoge las conclusiones obtenibles del trabajo realizado, así como una serie de vías futuras con el propósito de ampliar y extender el trabajo realizado.
+Este documento se organiza en los siguientes capítulos. El presente
+capítulo 1 ha presentado el contexto, motivación, objetivos y la
+metodología seguida. El capítulo 2 presenta fundamentos de las bases de
+datos NoSQL y una Introducción al sistema de gestión de bases de datos
+NoSQL MongoDB, el capítulo 3 hace un recorrido por las soluciones vigentes
+que podemos encontrar a día de hoy para motivar la implementación de este
+trabajo, el capítulo 4 tratará los objetivos del trabajo, tecnologías a
+utilizar y el marco en el que se encuentra, el capítulo 5 trata de la
+implementación del generador, su uso, funcionalidad y cómo ha sido
+construido y por último el capítulo 8 recoge las conclusiones obtenibles
+del trabajo realizado, así como una serie de vías futuras con el propósito
+de ampliar y extender el trabajo realizado.
 
 %%% Local variables:
 %%% TeX-master: "memoria.tex"

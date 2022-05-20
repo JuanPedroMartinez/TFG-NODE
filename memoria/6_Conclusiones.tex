@@ -2,11 +2,95 @@
 
 \section{Conclusiones}
 
-Conclusiones...
+Concluyendo, de acuerdo con lo explicado en la memoria del trabajo, al
+comienzo del trabajo se planteó el problema que supone la administración y
+gestión de los repositorios Git de los alumnos por parte del profesorado de
+cara a evaluar el trabajo realizado. Este es un problema común al que se
+enfrentan muchos de los docentes de la facultad de Informática de Murcia,
+especialmente en las épocas de evaluación.
+
+Como consecuencia, se planteó la posibilidad de analizar las opciones
+existentes para simplificar el problema, encontrando así que las soluciones
+existentes no se adaptan del todo para la facultad, bien sea por una
+difícil implantación en la institución, o por requerimiento de pago por
+parte de los profesores o por la misma institución. De este modo, se
+propone implementar una solución desarrollada en la facultad y para la
+misma, que intente resolver el problema de una forma sencilla y funcional,
+de forma que la solución obtenida evite los errores de las soluciones ya
+analizadas.
+
+Por otra parte, se pretende ofrecer una implementación de forma que pueda
+ser desplegada y escalada de forma simple, pudiendo así, desplegarse en los
+servidores de la facultad de forma simple, y ofreciendo abiertamente la
+herramienta para todos los profesores.
+
+En cuanto a la solución obtenida, es una solución válida para el problema,
+cumpliendo con la necesidad de hacer más eficiente el análisis de las
+estadísticas de repositorios, disminuyendo de forma drástica el tiempo
+necesario para ello, respecto a una comprobación de manera manual en los
+proveedores de servicios. Por otra parte, la herramienta está plenamente
+desarrollada en la facultad, por lo que cuenta con la ventaja de no tener
+coste alguno para la facultad, y la gestión interna de los datos de los
+profesores tampoco sería expuesta fuera de la misma. Por lo que conseguimos
+mejorar algunos de los aspectos ante las soluciones de pago que previamente
+habíamos analizado.
+
+Respecto a la facilidad de despliegue planteada, y la posibilidad de
+escalado, se ofrecen contenedores software, en este caso usando la
+tecnología Docker, con la cual podemos realizar un despliegue de forma
+sencilla y rápida, permitiendo además realizar el despliegue en diferentes
+plataformas y sistemas operativos. Por lo cual este segundo objetivo queda
+resuelto.
+
+El desarrollo de la aplicación, por otra parte, ha sido un reto, el cual ha
+conllevado muchas horas de trabajo y la necesidad de aprender nuevas
+tecnologías que nunca había tratado. Sin embargo, ha sido muy gratificante
+al ver una vez la herramienta completada y poder ponerla en marcha,
+entendiendo así la mejora y la ayuda que esta puede suponer. Por otra
+parte, el desarrollo de este proyecto no hubiese sido posible sin la ayuda
+del tutor Diego Sevilla, el cual me ha introducido en el uso de las nuevas
+tecnologías de contenerización y ayudándome en el estudio de las
+herramientas necesarias y ofreciendo una nueva visión en la que las
+aplicaciones se desarrollan mediante la implementación de múltiples
+microservicios independientes, que colaboran para resolver un propósito
+común.
+
 
 \section{Futuros trabajos}
 
-Futuros trabajos...
+A medida que el desarrollo del proyecto ha ido avanzando, creciendo y
+tomando forma, hemos podido comprobar las múltiples posibilidades que se
+ofrecen, y el gigantesco rango de mejora que puede tener la aplicación
+implementada. En primer lugar, mediante el API de Github, hemos podido ver
+que se puede realizar un control total de los repositorios de Git, con
+ello, se nos ofrece la posibilidad de no solo consultar estadísticas, sino
+de también poder clonar repositorios, realizar commits, añadir
+colaboradores y cualquier funcionalidad posible sobre los repositorios,
+cuenta y usuarios de Git.
+
+Respecto al análisis de las herramientas ofrecidas por los proveedores de
+servicios, especialmente en el caso de la herramienta de pago GitHub
+classrooms, vemos nuevas posibilidades de implementación para nuestra
+aplicación. Pudiendo implementar sobre nuestra arquitectura, la gestión de
+aulas, donde se configuren profesores y alumnos, ofreciendo múltiples
+funcionalidades nuevas como la creación de tareas, esquemas de código que
+se comparten para todos los alumnos a modo de plantillas, tareas que puedan
+ser autoevaluadas, y muchas más funcionalidades que se pueden plantear,
+siendo estas de gran utilidad para tanto estudiantes como profesores.
+
+Por último, respecto al despliegue sobre los servidores de la universidad,
+se ofrece una configuración de docker compose donde se despliegan los tres
+servicios de la aplicación de forma automática. Sin embargo, al ya contar
+con los contenedores software, podríamos desplegar esta aplicación sobre
+una arquitectura cloud real, pudiendo ser sobre los mismos servidores de la
+facultad, o sobre cloud ofrecido por algún proveedor de servicios. De esta
+forma, mediante un orquestador, como podría ser el caso de kubernetes, nos
+permitiría realizar el escalado de los contenedores de forma independiente,
+permitiéndonos así ofrecer más nodos cuando esperamos una mayor carga de
+trabajo o número de peticiones sobre la web, como podrían ser las fechas de
+evaluación donde los profesores podrían hacer un uso intensivo de la
+aplicación.
+
 
 %%% Local variables:
 %%% TeX-master: "memoria.tex"
