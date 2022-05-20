@@ -215,3 +215,7 @@ document.getElementById("accordionExample").addEventListener("show.bs.collapse",
 
 
 inicializarGraficos();
+
+function irInicio(){
+    window.location.replace("http://"+window.location.host);
+}

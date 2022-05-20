@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src='misRepos.js' defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -26,14 +28,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <select id="selectorAsignatura" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select id="selectorAsignatura" class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example">
                 <option selected>Seleccionar asignatura</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+            </select>
             <ul class="navbar-nav mr-auto">
-               
+
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Añadir Asignatura
@@ -73,41 +73,23 @@
                         </div>
                     </div>
                 </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 
-                    <div class="dropdown-menu overflow-auto" aria-labelledby="dropdown01">
-                        <div id="menu-dropdown" class="">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            
+
 
         </div>
     </nav>
-
+    <div id="alertaRoja" class=" alert alert-danger alert-dismissible fade " role="alert">
+        esto es una alerta.
+    </div>
     <main class="container max-width-sm  ">
 
-        <div class="buscador my-5  row max-width-sm ">
+        <div class="buscador my-3  row max-width-sm ">
             <div class="col-sm-7">
-                <form class="form-inline my-2 my-lg-0">
-                    <input id="buscador" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <div class="form-inline my-2 my-lg-0">
+                    <input id="buscador" class="form-control mr-sm-2" type="text" placeholder="Search"
+                        aria-label="Search">
+                    <button id="btnBusqueda" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                </div>
             </div>
             <div class="col-sm">
                 <input type="text" class="form-control" placeholder="State" aria-label="State">
@@ -141,6 +123,36 @@
 
     </main>
 
+    <div class="modal fade" id="modalRepo" tabindex="-1" aria-labelledby="modal para repositorios" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir asignatura</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- cuerpo del modal -->
+
+                    <div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Seleccione la asignatura sobre la que desea añadir el
+                                repositorio.</label>
+                            <select id="selectorAsignatura2" class="form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example">
+                                <option selected>Seleccionar asignatura</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="addRepoAsignatura()">Añadir</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <footer>
 

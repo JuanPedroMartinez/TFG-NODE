@@ -1,4 +1,5 @@
-function verificarClaves() {
+function verificarClaves(event) {
+    event.preventDefault();//evitamos el submit
     clave1 = document.getElementById("pass1").value;
     clave2 = document.getElementById("pass2").value;
     console.log(clave1+clave2)
@@ -10,8 +11,6 @@ function verificarClaves() {
 
     else {
         // Si las contraseñas coinciden ocultamos el mensaje de error
-        document.getElementById("errorclaves").classList.remove("mostrar");
-        document.formulario.submit();
-        return true;
+        document.getElementById("registro").submit();
     }
 }

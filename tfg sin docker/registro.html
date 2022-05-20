@@ -16,12 +16,12 @@
 <body>
     <div class="login">
         <h1>Registro</h1>
-        <form action="/register" method="post"  name="formulario" onsubmit="verificarClaves();">
+        <form id="registro" action="/register" method="post"  name="formulario" >
             <input type="text" name="username" placeholder="Usuario GitHub" required="required" />
             <input type="text" name="email" placeholder="Email" required="required" />
             <input type="password" name="password" id="pass1" placeholder="Contraseña" required="required" />
             <input type="password" name="repassword" id="pass2" placeholder="Repetir Contraseña" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-large">Completar registro</button>
+            <button type="submit" name="submitButton" onclick="verificarClaves(event)" class="btn btn-primary btn-block btn-large">Completar registro</button>
             <div id="errorclaves" class="ocultar" >Las constraseñas no coinciden.</div>
         </form>
     </div>

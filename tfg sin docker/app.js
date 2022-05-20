@@ -102,8 +102,13 @@ async function getPatch(repositorio, usuario, referencia){
 
 // http://localhost:3000/
 app.get('/', function (request, response) {
-	// Render login template
-	response.sendFile(path.join(__dirname + '/login.html'));
+	//en caso de estar loggeado.
+	if (request.session.loggedin) {
+		response.sendFile(path.join(__dirname + '/misRepos.html'));
+	} else {
+		response.sendFile(path.join(__dirname + '/login.html'));
+	}
+	
 });
 
 
@@ -127,7 +132,7 @@ app.post('/auth', function (request, response) {
 				// Redirect to home page
 				response.redirect('/misRepos');
 			} else {
-				response.send('Incorrect Username and/or Password!');
+				response.sendFile(path.join(__dirname + '/static/errors/loginErr.html'));
 			}
 
 		});
@@ -177,18 +182,24 @@ app.post('/addAsignatura', function (request, response) {
 	moduloAsignaturas.nuevaAsignatura(connection, asignatura, cadenaCoindicencia, request.session.username)
 	response.redirect("/misRepos")
 });
+//metodo post para añadir un repositorio a una asingatura.
+app.post('/addRepoAsignatura', function (request, response) {
+	var asignatura = request.body.asignatura;
+	var cadenaCoindicencia = request.body.cadenacoincidencia;
+
+	moduloAsignaturas.nuevaAsignatura(connection, asignatura, cadenaCoindicencia, request.session.username)
+	response.redirect("/misRepos")
+});
 
 // http://localhost:3000/home
 app.get('/home', function (request, response) {
 	// If the user is loggedin
 	if (request.session.loggedin) {
 		//recuperamos los datos de github.
-
-
 		response.sendFile(path.join(__dirname + '/home.html'));
 	} else {
 		// Not logged in
-		response.send('Please login to view this page!');
+		response.sendFile(path.join(__dirname + '/login.html'));
 	}
 });
 
@@ -201,7 +212,7 @@ app.get('/misRepos', function (request, response) {
 		response.sendFile(path.join(__dirname + '/misRepos.html'));
 	} else {
 		// Not logged in
-		response.send('Please login to view this page!');
+		response.sendFile(path.join(__dirname + '/login.html'));
 	}
 });
 
@@ -229,11 +240,5 @@ app.get('/data', function (request, response) {
 
 
 });
-//getCommitsRepo("TDS2122-31-AppVideo", "JuanPedroMartinez").then(res =>console.log(res))
-
-
-
-moduloAsignaturas.bbddToAsignaturasMapeado(connection,"JuanPedroMartinez").then(resu => console.log(resu))
-
 
 app.listen(3000);
