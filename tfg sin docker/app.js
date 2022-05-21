@@ -5,7 +5,7 @@ const session = require('express-session');
 const path = require('path');
 const { response } = require("express");
 const moduloAsignaturas = require("./modules/MYSQLasignaturas.js");
-const {Asignatura} = require("./modules/Asignatura.js")
+const { Asignatura } = require("./modules/Asignatura.js")
 
 
 const connection = mysql.createConnection({
@@ -31,8 +31,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 
 
-var octokit = new Octokit({ auth: "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" })
-let user = "JuanPedroMartinez"
+var octokit;
+
 
 async function getUsuario(usuario) {
 	var res = await octokit.rest.users.getByUsername({ username: usuario });
@@ -46,7 +46,7 @@ async function getReposUsuario(usuario) {
 	})
 	var salida = [];
 	res.data.forEach(element => {
-		salida.push({ "repo": element.name, "owner": element.owner.login, "url": element.clone_url});
+		salida.push({ "repo": element.name, "owner": element.owner.login, "url": element.clone_url });
 	})
 	return salida;
 }
@@ -70,26 +70,26 @@ async function getCommitsRepo(repositorio, usuario) {
 	})
 	var salida = [];
 	res.data.forEach(element => {
-		salida.push({ "author": element.commit.author.name, "date": element.commit.author.date, "sha" : element.sha });
+		salida.push({ "author": element.commit.author.name, "date": element.commit.author.date, "sha": element.sha });
 
 	})
 
 	return salida;
 }
 
-async function getPatch(repositorio, usuario, referencia){
+async function getPatch(repositorio, usuario, referencia) {
 	var res = await octokit.request('GET /repos/{owner}/{repo}/commits/{ref}', {
 		owner: usuario,
 		repo: repositorio,
 		ref: referencia
-	  })
+	})
 
-	var salida="";
+	var salida = "";
 	res.data.files.forEach(element => {
-		salida+= element.filename
-		salida+="\n"
-		salida+=element.patch
-		salida+= "\n\n\n"
+		salida += element.filename
+		salida += "\n"
+		salida += element.patch
+		salida += "\n\n\n"
 	});
 
 
@@ -108,7 +108,7 @@ app.get('/', function (request, response) {
 	} else {
 		response.sendFile(path.join(__dirname + '/login.html'));
 	}
-	
+
 });
 
 
@@ -128,7 +128,9 @@ app.post('/auth', function (request, response) {
 				// Authenticate the user
 				request.session.loggedin = true;
 				request.session.username = username;
-				
+				request.session.token = results[0].token;
+				octokit = new Octokit({ auth: request.session.token }) // inicializamos octokit.
+
 				// Redirect to home page
 				response.redirect('/misRepos');
 			} else {
@@ -147,7 +149,8 @@ app.post('/register', function (request, response) {
 	let username = request.body.username;
 	let email = request.body.email;
 	let password = request.body.password;
-	let repassword = request.body.repassword;
+	let token = request.body.token;
+	console.log(token)
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
@@ -156,14 +159,16 @@ app.post('/register', function (request, response) {
 			if (error) throw error;
 			// si el usuario existe o el email informamos al usuario.
 			if (results.length > 0) {
-				//en caso de estar registrado analizar que hacer.
+				response.send("El usuario ya existe.")
 
 
 			} else {
-				connection.query('INSERT INTO accounts (username, password, email) VALUES (?,?,?)', [username, password, email], function (error, results, fields) {
+				connection.query('INSERT INTO accounts (username, password, email, token) VALUES (?,?,?,?)', [username, password, email, token], function (error, results, fields) {
 					if (error) throw error;
 					request.session.loggedin = true;
 					request.session.username = username;
+					request.session.token = token
+					octokit = new Octokit({ auth: token })
 					response.redirect("/misRepos");
 				});
 			}
@@ -185,10 +190,15 @@ app.post('/addAsignatura', function (request, response) {
 //metodo post para añadir un repositorio a una asingatura.
 app.post('/addRepoAsignatura', function (request, response) {
 	var asignatura = request.body.asignatura;
-	var cadenaCoindicencia = request.body.cadenacoincidencia;
+	var propietario = request.body.propietario;
+	var repositorio = request.body.repositorio;
 
-	moduloAsignaturas.nuevaAsignatura(connection, asignatura, cadenaCoindicencia, request.session.username)
-	response.redirect("/misRepos")
+	console.log(asignatura + propietario + repositorio)
+	moduloAsignaturas.nuevoRepositorio(connection, repositorio, propietario, asignatura);
+	response.status(201).end();
+});
+app.get('/asignaturas', function (request, response) {
+	moduloAsignaturas.bbddToAsignaturasMapeado(connection, request.session.username).then(resu => response.send(resu))
 });
 
 // http://localhost:3000/home
@@ -234,11 +244,14 @@ app.get('/data', function (request, response) {
 	if (request.query.datos == "patch") {
 		getPatch(request.query.repo, request.query.owner, request.query.sha).then(resu => response.send(resu))
 	}
-	if (request.query.datos == "asignaturas") {
-		moduloAsignaturas.bbddToAsignaturasMapeado(connection, request.session.username).then(resu => response.send(resu))
-	}
-
 
 });
 
+
+function inicializarOctokit(token) {
+	octokit = new Octokit({ auth: token })
+}
 app.listen(3000);
+
+
+exports.inicializarOctokit = inicializarOctokit;

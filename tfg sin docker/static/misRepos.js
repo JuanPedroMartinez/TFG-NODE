@@ -12,7 +12,7 @@ async function getRepositoriosUsuario() {
 }
 
 async function getAsignaturasUsuario() {
-    var aux = await fetch(window.location.protocol + "/data?datos=asignaturas")
+    var aux = await fetch(window.location.protocol + "/asignaturas")
     return await aux.json();
 
 }
@@ -74,9 +74,8 @@ getRepositoriosUsuario().then((repos) => {//recuperamos los repositorios
             }
             document.getElementById("addRepo").onclick = (event) => {
 
-
                 datosRepo = {
-                    "repo": event.target.parentNode.parentNode.firstChild.innerHTML,
+                    "repositorio": event.target.parentNode.parentNode.firstChild.innerHTML,
                     "propietario": event.target.parentNode.parentNode.children[1].innerHTML
                     //guardamos el nombre y propietariodel repositorio para luego añadirlo a la asignatura,
                     //en caso de ser necesario.
@@ -96,6 +95,7 @@ window.onload = () => {
         console.log(asignaturaSeleccionada)
         document.getElementById("buscador").value = asignaturaSeleccionada.cadenaCoindicencias;
         filtrarRepositorios(asignaturaSeleccionada.cadenaCoindicencias);
+        mostrarRepositoriosAsignatura(e.target.value);
     })
 
     document.getElementById("btnBusqueda").addEventListener("click", e => {
@@ -123,7 +123,7 @@ function filtrarRepositorios(cadenaFiltrado) {
     }
 }
 
-function addRepoAsignatura() {
+async function addRepoAsignatura() {
     console.log(datosRepo)
 
     var modal = document.getElementById("modalRepo")
@@ -135,31 +135,94 @@ function addRepoAsignatura() {
     console.log(asignatura)
 
     if (asignatura != "Seleccionar asignatura") {//Si se ha seleccionado asignatura.
-        fetch(window.location.protocol + "/addRepoAsignatura", { // enviamos los datos al servidor.
+        var response = await fetch(window.location.protocol + "/addRepoAsignatura", { // enviamos los datos al servidor.
             method: 'POST',
-            body: {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 "asignatura": asignatura,
                 "repositorio": datosRepo.repositorio,
                 "propietario": datosRepo.propietario
-            }
+            })
         })
+        console.log(datosRepo.repositorio)
+        console.log(JSON.stringify({
+            "asignatura": asignatura,
+            "repositorio": datosRepo.repositorio,
+            "propietario": datosRepo.propietario
+        }))
+
+        if (response.status == 201) {
+
+        }
+        else {
+            mostrarAlerta("No se ha podido crear la alerta, dado un error interno.")
+        }
     }
-    else{
-        alerta = document.getElementById("alertaRoja")
-        alerta.innerHTML="Debes seleccionar una asignatura primero.";
-        alerta.classList.add("show")//mostramos la alerta.
-        //escondemos la alerta tras un tiempo
-        setTimeout(function(){
-            alerta.classList.remove("show");
-        }, 2000);
+    else {
+        mostrarAlerta("Debe seleccionar una asignatura primero")
     }
 
 
 
 }
 
+async function mostrarRepositoriosAsignatura(indexAsignatura) {
+    var asignaturas= JSON.parse(sessionStorage.getItem("asignaturas"));
+    var repositorios = asignaturas[indexAsignatura].repositorios;
+   repositorios.forEach(repo => {
+        //añadimos los repositorios a la tabla
+
+  
+        var fila = tabla.insertRow(1);
+        fila.insertCell(0).innerHTML = repo.nombre;
+        fila.insertCell(1).innerHTML = repo.autor;
+        fila.insertCell(2).innerHTML = '<button  id="goGit" type="button" class="btn btn-success">Ir a Git</button>' +
+            '<button id="copy" type="button" class="btn-copiar mx-3 btn btn-info"><i class="bi bi-clipboard"></i></button>' +
+            '<button id="addRepo" type="button" class="btn-copiar mx-3 btn btn-info" data-bs-toggle="modal" data-bs-target="#modalRepo">Añadir en asignatura</button>';
+
+        //añadimos el evento para llevarnos a la estadisticas de un repositorio al hacer click en alguna de las filas.
+        fila.cells[0].onclick = () => {
+            window.location.href = window.location.protocol + "/home?repo=" + repo.repo + "&owner=" + repo.owner;
+        }
+        fila.cells[1].onclick = () => {
+            window.location.href = window.location.protocol + "/home?repo=" + repo.repo + "&owner=" + repo.owner;
+        }
+        //añadimos los eventos de click de los botones.
+
+        document.getElementById("goGit").onclick = () => {
+            window.location.href = repo.url;
+        }
+        document.getElementById("copy").onclick = () => {
+            navigator.clipboard.writeText(repo.url);
+        }
+        document.getElementById("addRepo").onclick = (event) => {
+
+            datosRepo = {
+                "repositorio": event.target.parentNode.parentNode.firstChild.innerHTML,
+                "propietario": event.target.parentNode.parentNode.children[1].innerHTML
+                //guardamos el nombre y propietariodel repositorio para luego añadirlo a la asignatura,
+                //en caso de ser necesario.
+            }
+        }
+   });
+  
+
+    
+
+}
 
 
+function mostrarAlerta(mensajeAlerta) {
+    alerta = document.getElementById("alertaRoja")
+    alerta.innerHTML = mensajeAlerta;
+    alerta.classList.add("show")//mostramos la alerta.
+    //escondemos la alerta tras un tiempo
+    setTimeout(function () {
+        alerta.classList.remove("show");
+    }, 2000);
+}
 
 
 

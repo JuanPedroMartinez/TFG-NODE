@@ -45,10 +45,18 @@ async function getAsignaturasUsuario(connection, cuenta) {
 //metodos relacionados con los repositorios añadidos asociados a una asignatura, 
 //esto ocurre cuando algun alumno no cumple la cadena de coincidencia escrita en el nombre del repositorio.
 
-function nuevoRepositorio(connection, nombre, autor) {
-    connection.query('INSERT INTO repositorios (nombre, autor) VALUES (?,?,?)', [nombre, autor], function (error, results, fields) {
-        if (error) { throw error }
+function nuevoRepositorio(connection, nombre, autor,asignatura) {
+
+    connection.query('SELECT id from asignaturas WHERE nombre=?', asignatura, function (error, result, fields) {
+        if (error) { reject(error) }
+        
+        
+        connection.query('INSERT INTO repositorios (nombre, autor,id_asignatura) VALUES (?,?,?)', [nombre, autor,result[0].id], function (error, results, fields) {
+            if (error) { throw error }
+    }) 
     })
+
+   
 
 }
 
@@ -78,7 +86,6 @@ async function bbddToAsignaturasMapeado(connection, cuenta) {
     salida = new Array(); //array para devolver las asignaturas.
     //recuperamos las asingaturas del usuario 
     var asignaturas = await getAsignaturasUsuario(connection, cuenta);
-    console.log(asignaturas);
     for (var element of asignaturas) {
         repositorios = await getRepositoriosAsignatura(connection, element.id)
         salida.push(new Asignatura(element.id, element.nombre, element.cadena_coincidencias, element.cuenta, repositorios))
