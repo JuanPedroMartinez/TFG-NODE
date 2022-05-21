@@ -27,15 +27,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <select id="selectorAsignatura" class="form-select form-select-lg mb-3"
+        <div class="collapse navbar-collapse mx-3 rounded" id="navbarsExampleDefault">
+            <select id="selectorAsignatura" class="rounded form-select form-select-lg mb-3"
                 aria-label=".form-select-lg example">
                 <option selected>Seleccionar asignatura</option>
             </select>
             <ul class="navbar-nav mr-auto">
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class=" mx-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Añadir Asignatura
                 </button>
 
@@ -78,29 +78,22 @@
 
         </div>
     </nav>
-    <div id="alertaRoja" class=" alert alert-danger alert-dismissible fade " role="alert">
+    <div id="mensaje" class=" m-0 alert alert-info alert-dismissible fade " role="alert">
+        esto es un mensaje
+    </div>
+    <div id="alertaRoja" class=" sticky-top m-0 alert alert-danger alert-dismissible fade " role="alert">
         esto es una alerta.
     </div>
     <main class="container max-width-sm  ">
 
-        <div class="buscador my-3  row max-width-sm ">
-            <div class="col-sm-7">
+        <div class="buscador  row max-width-sm ">
+            <div class="col">
                 <div class="form-inline my-2 my-lg-0">
                     <input id="buscador" class="form-control mr-sm-2" type="text" placeholder="Search"
                         aria-label="Search">
-                    <button id="btnBusqueda" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                    <button id="btnBusqueda" class="px-3 btn btn-outline-success my-2 my-sm-0">Search</button>
                 </div>
             </div>
-            <div class="col-sm">
-                <input type="text" class="form-control" placeholder="State" aria-label="State">
-
-
-            </div>
-            <div class="col-sm">
-                <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
-            </div>
-
-
 
         </div>
         <div class="tablaRepos overflow-auto table-responsive ">
