@@ -1,3 +1,4 @@
+
 html {
 
     font-family: 'Open Sans', sans-serif;
@@ -11,8 +12,48 @@ html {
     background-attachment: fixed;
 }
 
+/* barra de navegacion */
+.dropdown-menu{
+    height: 130px;
+    
+}
+
+#alertaRoja {
+    position:fixed; 
+    top: 90px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+}
+
+#selectorAsignatura{
+    height: 40px;
+    margin-top: 15px;
+}
+
+
+/* content */
 body {
     height: 100vh;
+}
+aside h2{
+    color:white;
+    padding:3vh;
+    font-size:3vw;
+}
+
+aside .divtabla {
+    height:60vh;
+    width: 80%;
+}
+
+
+/*css para la barra lateral donde controlar las asignaturas.*/
+
+#asignaturas{
+    height: 100vh;
+    background-color: #212529;
 }
 
 /* css para la barra de navegacion. */
@@ -75,12 +116,6 @@ body {
 
 /* modificamos el scroller de la tabla. */
 
-.scroll {
-    height: 300px;
-    width: 40px;
-    overflow-y: scroll;
-    display: inline-block;
-}
 
 .inner {
     height: 300%;

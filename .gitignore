@@ -1,1 +1,4 @@
 tfg sin docker/node_modules
+/node_modules
+/restjs/node_modules
+

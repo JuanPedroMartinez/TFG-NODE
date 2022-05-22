@@ -67,7 +67,7 @@ const myChart2 = new Chart(barChart2, {
 
 //ojo con las rutas en caso de no estar en localhost, puede cambiar el funcionamiento
 //https://stackoverflow.com/questions/1034621/get-the-current-url-with-javascript
-async function getColaboradores() {
+async function getDatosRepo() {
     var params = new URLSearchParams(window.location.search)
     var repo = params.get("repo");
     var owner = params.get("owner");
@@ -81,9 +81,10 @@ async function getColaboradores() {
 
 //funcion para inicializar los graficos tras recibir los datos del servidor.
 async function inicializarGraficos() {
-    res = await getColaboradores();
+    res = await getDatosRepo();
     modificarGrafico2(res);
     modificarGrafico1(res);
+    accordeonCommits(res);
 }
 
 async function modificarGrafico2(entrada) {
@@ -113,10 +114,10 @@ async function modificarGrafico2(entrada) {
     myChart2.update();
 }
 
-async function modificarGrafico1(entrada) {
- 
+async function modificarGrafico1(res) {
+  
 
-    entrada.forEach(element => {
+    res.forEach(element => {
         autor = element.author;
         date = (parseInt(element.date.substring(5, 7)) - 1 + 4) % 12;//tomamos unicamente el mes de la fecha.
         console.log(date);
@@ -168,4 +169,53 @@ async function modificarGrafico1(entrada) {
 
 }
 
+
+async function accordeonCommits(res){
+  
+    
+    var acordeon = document.getElementById("accordionExample");
+    contador=0;
+    res.forEach(element => {
+        acordeon.innerHTML += '<div class="accordion-item">'+
+      ' <h2 class="accordion-header" id="heading' + contador+'">'+
+           '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"'+
+              ' data-bs-target="#collapse'+ element.sha+'" aria-expanded="false" aria-controls="collapse'+ element.sha+'">'+
+                element.author +
+          ' </button> </h2>'+
+       '<div id="collapse'+ element.sha+'" class="accordion-collapse collapse" aria-labelledby="heading'+ contador+'" data-bs-parent="#accordionExample">'+
+         '  <div class="accordion-body bg-dark text-white">'+
+           
+       ' </div> </div> </div>' 
+
+    contador++; //contador para que los ids de los elementos sean unicos.
+    });
+    
+}
+
+
+
+//en caso de que se seleccione algun commit para consultar el patch entonces hacemos otra peticion para así obtener mas datos del commit,
+//no saturando así el servidor con peticiones de commits que en algunos casos no seran consultados.
+async function consultaCommit(sha){
+    var params = new URLSearchParams(window.location.search)
+    var repo = params.get("repo");
+    var owner = params.get("owner");
+    var response = await fetch(window.location.protocol + "/data?datos=patch&repo="+repo+ "&owner=" + owner +"&sha=" +sha)
+    return await response.text();
+}
+document.getElementById("accordionExample").addEventListener("show.bs.collapse", (e) =>{
+    sha = e.target.id.split("collapse")[1]
+    consultaCommit(sha).then( respuesta =>{
+        //insertamos la respuesta con el patch del commit en el interior del acordeon.
+        document.querySelector("#collapse"+sha + " .accordion-body").innerHTML = "<pre>"+respuesta+"</pre>"
+    })
+    console.log(e.target.id.split("collapse")[1])
+})
+
+
+
 inicializarGraficos();
+
+function irInicio(){
+    window.location.replace("http://"+window.location.host);
+}

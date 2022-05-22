@@ -12,9 +12,6 @@ app.use(express.json()); //permite recibir parametros en json.
 app.use(express.urlencoded({ extended: true }));
 
 
-//var octokit = new Octokit({ auth: "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" })
-let user = "JuanPedroMartinez"
-
 
 async function getUsuario(usuario,token) {
 	var octokit = new Octokit({auth: token})
