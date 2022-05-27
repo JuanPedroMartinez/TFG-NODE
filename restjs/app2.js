@@ -57,13 +57,32 @@ async function getCommitsRepo(repositorio, usuario, token) {
 	})
 	var salida = [];
 	res.data.forEach(element => {
-		salida.push({ "author": element.commit.author.name, "date": element.commit.author.date });
+		salida.push({ "author": element.commit.author.name, "date": element.commit.author.date, "sha": element.sha });
 
 	})
-
 	return salida;
 }
 
+async function getPatch(repositorio, usuario, referencia,token) {
+	var octokit = new Octokit({auth: token})
+
+	var res = await octokit.request('GET /repos/{owner}/{repo}/commits/{ref}', {
+		owner: usuario,
+		repo: repositorio,
+		ref: referencia
+	})
+
+	var salida = "";
+	res.data.files.forEach(element => {
+		salida += element.filename
+		salida += "\n"
+		salida += element.patch
+		salida += "\n\n\n"
+	});
+
+
+	return salida;
+}
 
 
 //RUTAS DE ACCESO PARA PETICIONES A LA API REST.
@@ -87,6 +106,11 @@ app.get('/collaborators', function (request, response) {
 	getColaboradoresRepo(request.query.repo, request.query.user, request.body.token).then(resu => response.send(resu))
 	
 })
+
+app.get('/patch', function (request, response){
+	console.log("recibo la peticion en restjs")
+	getPatch(request.query.repo, request.query.owner, request.query.sha,request.body.token).then(resu => response.send(resu))
+});
 
 
 app.listen(3001);

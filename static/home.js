@@ -205,7 +205,9 @@ async function consultaCommit(sha){
 }
 document.getElementById("accordionExample").addEventListener("show.bs.collapse", (e) =>{
     sha = e.target.id.split("collapse")[1]
+    console.log(sha)
     consultaCommit(sha).then( respuesta =>{
+        console.log(respuesta)
         //insertamos la respuesta con el patch del commit en el interior del acordeon.
         document.querySelector("#collapse"+sha + " .accordion-body").innerHTML = "<pre>"+respuesta+"</pre>"
     })

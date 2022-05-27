@@ -243,6 +243,7 @@ app.get('/data', function (request, response) {
 	}
 	if (request.query.datos == "patch") {
 		getPatch(request.query.repo, request.query.owner, request.query.sha).then(resu => response.send(resu))
+		console.log("recibo la peticion en node js")
 	}
 
 });

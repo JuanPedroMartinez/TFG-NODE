@@ -193,6 +193,19 @@ app.get('/data', function (request, response) {
 		}).then(res => response.send(res.data)).catch(err => console.log(err))
 
 	}
+	if (request.query.datos == "patch") {
+		axios({
+			method: 'get',
+			url: "http://"+ process.env.PROXY_REST+ ":3001/patch?repo="+ request.query.repo
+						+ "&owner=" + request.query.owner + "&sha=" + request.query.sha,
+			data: {
+				token:request.session.token
+			}
+		}).then(res => response.send(res.data)).catch(err => console.log(err))
+
+	}
+
+
 
 });
 
