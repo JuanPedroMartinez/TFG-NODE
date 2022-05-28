@@ -41,6 +41,15 @@
     background-color: #e6e6e6;
 }
 
+#mainTitle{
+
+    text-align: center;
+    font-size: 10vh;
+    color:white;
+    padding-top:20px;
+}
+
+
 .btn-large {
     padding: 9px 14px;
     font-size: 15px;

@@ -35,3 +35,12 @@ body{
     height: 40vh;   
 }
   
+#mainTitle{
+
+    padding-left: 10px;
+    justify-content: center;
+    vertical-align: middle;
+    font-size: 3vh;
+    color:white;
+
+}

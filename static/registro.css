@@ -188,3 +188,14 @@ input:focus {
 .mostrar {
     display: block;
 }
+#mainTitle{
+
+    text-align: center;
+    font-size: 10vh;
+    color:white;
+    padding-top:20px;
+}
+
+#alerta{
+    color:orange;
+}

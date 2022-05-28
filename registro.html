@@ -14,12 +14,13 @@
 </head>
 
 <body>
+    <h1 id="mainTitle">🅴🅳🆄🅲🅰 🅶🅸🆃</h1>
     <div class="login">
         <h1>Registro</h1>
         <form id="registro" action="/register" method="post"  name="formulario" >
             <input type="text" name="username" placeholder="Usuario GitHub" required="required" />
-           <p>*Importante, nombre de usuario debe ser igual al usuario de github.</p>
-            <input type="text" name="token" placeholder="token GitHub" required="required" />
+           <p id="alerta">*Importante, nombre de usuario debe ser igual al usuario de github.</p>
+            <input type="text" name="token" placeholder="Token GitHub" required="required" />
             <input type="text" name="email" placeholder="Email" required="required" />
             <input type="password" name="password" id="pass1" placeholder="Contraseña" required="required" />
             <input type="password" name="repassword" id="pass2" placeholder="Repetir Contraseña" required="required" />
