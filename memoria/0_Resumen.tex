@@ -2,7 +2,7 @@
 
 \addcontentsline{toc}{chapter}{Extended Abstract}
 
-Nowadays, Git is by far the most widely used modern version control system
+Nowadays, Git\cite{git} is by far the most widely used modern version control system
 in the world. Version control is a system that records changes to a
 file or set of files over time so that you can recall specific versions
 later. Git is a mature and actively maintained open source project, with
@@ -44,7 +44,7 @@ repositories increases. Imagine a professor who teaches different subjects,
 and for each of them the students use different repositories.
 
 Currently, the are some solutions for the problem, such as the stats panels
-of Git service providers, such as GitHub or GitLab. However in case of
+of Git service providers, such as GitHub\cite{GitHub} or GitLab\cite{GitLab}. However in case of
 GitHub, these stats can only be consulted on public repositories, to be
 able of check them at private repositories, a premium account is needed
 under a monthly subscription. On the other hand, GitLab stats panel is
@@ -146,15 +146,14 @@ during the development of the assigned work.
 
 Turning now to the implementation of the software, there were
 different alternatives, as for the development of the web server, the
-possibility of using Python with the Flask framework, or using Node JS
-based on the Express framework. Finally, the decision was to use Node
-JS given the good integration of the JSON\cite{json} format used by the Github
+possibility of using Python\cite{Python,PhytonGithub} with the Flask\cite{Flask} framework, or using NodeJS\cite{NodeJS,nodeDoc,CodeShack}
+based on the Express\cite{ExpressJS,GitBook,DevDocs} framework. Finally, the decision was to use NodeJS given the good integration of the JSON\cite{json} format used by the Github
 API through which we retrieve the data from the repositories, in
 addition to the many possibilities that the Express Framework offer
 for the development of simple API REST.
 
 Regarding the persistence of the data, necessary in this case for the
-data of both the users and the subjects created, a MySQL
+data of both the users and the subjects created, a MySQL\cite{MySQL}
 implementation is used, since the data to be persisted perfectly
 adapts to the relational model, and NodeJS offers very good libraries
 for connection and integration with the database from the server.
@@ -198,7 +197,7 @@ services developed in order to facilitate deployment in a cloud
 service.
 
 To do this, all services must offer a container based implementation,
-in this case using Docker container technology, currently, one of
+in this case using Docker\cite{Docker} container technology, currently, one of
 the most relevant technologies for this task.
 
 The structure of the application is divided into~3 containers, a
@@ -287,11 +286,11 @@ etc.
 
 \addcontentsline{toc}{chapter}{Resumen}
 
-Hoy en día, Git es, con diferencia el sistema de control de versiones
+Hoy en día, Git\cite{EDteam,CodicesSoftware,Uqbar,Sivsa} es, con diferencia el sistema de control de versiones
 moderno más utilizado en todo el mundo, es un proyecto de código
 abierto maduro y con un mantenimiento activo con infinidad de
 desarrolladores que lo respaldan. Originado y lanzado en 2005, por el
-famoso creador del núcleo del sistema operativo de linux Linus
+famoso creador del núcleo del sistema operativo de linux, Linus
 Torvalds, se ha convertido en una herramienta casi indispensable en
 los equipos de desarrollo software, ofreciendo un mejor rendimiento,
 flexibilidad y seguridad al equipo de desarrollo. Entre los múltiples
@@ -300,7 +299,7 @@ control de versiones más utilizados, encontramos trabajo en equipo en
 tiempo real con acceso compartido, autonomía, velocidad de las
 operaciones, estructura en árbol contando con diferentes ramas para
 facilitar pruebas y vías alternativas en el desarrollo, escalabilidad,
-codigo libre y apoyo de la comunidad.
+código libre y apoyo de la comunidad.
 
 Tanto ha sido el auge de esta tecnología, que múltiples facultades
 relacionadas con el software, lo integran en sus docencias, formando
@@ -382,7 +381,7 @@ Para la implementación del software, se utilizarán tecnologías NodeJS
 para el desarrollo del backend dando soporte al mismo mediante una
 base de datos MySQL. Por otra parte, en cuanto a la contenerización de
 la aplicación, se utilizará Docker para la generación y posterior
-despliegue de los contenedores mediante Docker-Compose.
+despliegue\cite{InitMySQLDocker,MYSQL-DOckerHUB,Docean-docker,Docean-dockerCompose} de los contenedores mediante Docker-Compose.
 
 Para concluir, comentar que el desarrollo del proyecto, ha conllevado
 bastante trabajo, pero ha sido una experiencia muy gratificante, y
@@ -390,7 +389,6 @@ clave para profundizar en tecnologías en auge en plena actualidad,
 como son el desarrollo de los microservicios y la colaboración entre
 ellos para dar solución a múltiples problemas , y su posterior
 despliegue sobre arquitecturas cloud.
-
 %%% Local variables:
 %%% TeX-master: "memoria.tex"
 %%% coding: utf-8

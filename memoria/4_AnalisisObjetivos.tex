@@ -8,7 +8,7 @@ Como requisitos de la aplicación encontramos:
 
 \begin{itemize}
 	\item Gestión de cuentas para el profesorado, contando con la posibilidad de realizar un registro, y posteriormente un login con la cuenta creada.
-	\item El profesorado debe contar con una cuenta válida de GitHub, cuyo nombre de usuario debe ser el mismo que el creado en la cuenta para el servicio implementado.
+	
 	\item Cada tutor debe contar con un token de GitHub que se introducirá junto con el registro, de tal forma que el software pueda acceder a los repositorios privados del tutor.
 	\item El software debe facilitar la gestión de asignaturas, donde los tutores puedan representar sus asignaturas, utilizando una cadena de coincidencia, que los alumnos introducirán en en nombre del repositorio, de tal forma que se realice el filtrado de los repositorios de cada asignatura.
 	\item Se debe ofrecer la posibilidad de añadir un repositorio concreto en una asignatura, de forma persistente, para aquellos casos en los que la cadena de coincidencia no sea correctamente introducida por los alumnos.
@@ -19,6 +19,17 @@ Como requisitos de la aplicación encontramos:
  
 	
 \end{itemize}
+
+Por otra parte, en cuanto los requisitos del usuario:
+\begin{itemize}
+	\item Se ofrecera una interfaz simple, intuitiva y fácil de aprender para el usuario.
+	\item Para permitir el acceso a la aplicación se debe realizar un registro previo, y posteriormente se puede realizar un inicio de sesión con la cuenta previamente creada.
+	\item El profesorado debe contar con una cuenta válida de GitHub, cuyo nombre de usuario debe ser el mismo que el creado en la cuenta para el servicio implementado.
+ 	\item El usuario debe poseer un token de GitHub, con al menos permiso de lectura de tanto repositorios privados como públicos. En el anexo primero, se encuentra una especificación para la obtención de un token y su configuración en caso de no contar con el mismo.
+	\item El profesorado indica a sus alumnos que se creen los repositorios para las asignaturas con un patrón claro, permitiendo así su filtrado, por ejemplo, indicando a los alumnos que se debe incluir en el nombre de los repositorios la cadena ``asginatura-curso''. De esta forma, se permite al usuario/tutor realizar un filtrado simple de los repositorios de su cuenta Git, permitiendo asignar a cada asignatura un nombre y una cadena de coincidencias, la cual coincide con lo indicado a los alumnos. Así el profesor puede encontrar rápidamente los repositorios de cada asignatura, accediendo con la interfaz a la misma. En el anexo primero, se encuentra la guía completa sobre la creación de asignaturas y filtrado de repositorios.
+	\item Se permite al usuario, añadir repositorios sobre alguna asignatura de forma manual, solucionando el caso en que algún alumno no añada al nombre del repositorio la cadena indicada por el profesor.
+\end{itemize}
+
 % \subsection{Arquitectura del lenguaje}
 
 % Deimos ha sido construido con Xtext~\cite{efftinge_spoenemann}, un framework construido en Java para diseñar lenguajes de programación y lenguajes de dominio específico. 

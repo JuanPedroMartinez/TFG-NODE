@@ -1,6 +1,6 @@
 \chapter{Diseño e implementación\label{05disenoTrabajo}}
 
-El proyecto, como ya se comentó en la aplicación está desarrollado principalmente con NodeJS sirviéndose del framework Express, dicha elección tuvo relevancia frente al uso de Python con el framework express dada la buena integración del lenguaje Javascript con el formato JSON, y la facilidad que ofrece para realizar peticiones a un API REST que proporciona los datos en un formato JSON. En este caso, todos los datos de los repositorios, deben ser recuperados a través del proveedor de servicios Git, en este caso GitHub.
+El proyecto, como ya se comentó en la aplicación está desarrollado principalmente con NodeJS sirviéndose del framework Express, dicha elección tuvo relevancia frente al uso de Python, con el cual previamente se realizaron algunas pruebas\cite{PhytonGithub,GitHubWrappers} y finalmente se implementó con el framework express dada la buena integración del lenguaje Javascript con el formato JSON, y la facilidad que ofrece para realizar peticiones a un API REST que proporciona los datos en un formato JSON. En este caso, todos los datos de los repositorios, deben ser recuperados a través del proveedor de servicios Git, en este caso GitHub.
 
 GitHub ofrece un completo API REST mediante el cual se puede realizar un control total de la herramienta Git sobre la cuenta de un usuario. Para ello, es necesario ofrecer un token de acceso, el cual se puede solicitar a través de la misma página web de GitHub y el cual es necesario para el funcionamiento y el acceso a los datos de los repositorios por parte de la aplicación desarrollada.
 
@@ -48,7 +48,7 @@ Como hemos comentado, las causas de la implementación del segundo servidor, es 
 
 \section{Consulta de datos al API de GitHub y autenticación.}
 
-Para la implementación de la aplicación, se utiliza la librería “Octokit”, una librería ofrecida de forma oficial por el proveedor de servicios, y cual se integra con el lenguaje javascript, mediante ella, podemos realizar las consultas al API de Github de una manera sencilla y teniendo acceso a operaciones que requieren acceso mediante token. Con esta librería, las peticiones realizadas, se configuran con las cabeceras adecuadas para garantizar la seguridad necesaria.Vemos a continuación, un fragmento de código que representa en javascript la obtención de una instancia de la librería y una función utilizada para recuperar la información de un usuario a través del API proporcionada.
+Para la implementación de la aplicación, se utiliza la librería “Octokit”\cite{Octokit,OctokitDoc}, una librería ofrecida de forma oficial por el proveedor de servicios, y cual se integra con el lenguaje javascript, mediante ella, podemos realizar las consultas al API de Github de una manera sencilla y teniendo acceso a operaciones que requieren acceso mediante token. Con esta librería, las peticiones realizadas, se configuran con las cabeceras adecuadas para garantizar la seguridad necesaria.Vemos a continuación, un fragmento de código que representa en javascript la obtención de una instancia de la librería y una función utilizada para recuperar la información de un usuario a través del API proporcionada.
 
 \begin{figure}[h!]
   \centerline{\includegraphics[width=1\textwidth]{octokit.png}}
@@ -66,7 +66,7 @@ La funcionalidad de la web debe ser, en un primer lugar, permitir registro e ini
 
 Para la implementación de la web, se basa en cuatro vistas diferentes, dos de ellas para registro e inicio de sesión, una para la página de inicio, donde se muestran los repositorios y asignaturas del usuario, y por último la página donde se visualizan las estadísticas del repositorio, esta última accesible al hacer click sobre algún repositorio en la página principal.
 
-Para el diseño de las vistas, se ha utilizado tecnologías específicas para la tarea, dando estructura a las páginas con HTML, para posteriormente añadir con css y bootstrap estilos, y por último implementar animaciones y eventos en javascript.
+Para el diseño de las vistas, se ha utilizado tecnologías específicas para la tarea, dando estructura a las páginas con HTML, para posteriormente añadir con CSS\cite{GradienteCSS} y Bootstrap\cite{Bootstrap} estilos, y por último implementar animaciones y eventos en Javascript. Por otra parte, para la creación de los gráficos, se ha utilizado una librería especificada en Javascript, Chart.js\cite{ChartJS,ChartJSIntro}, permitiendonos dibujar gráficos y pudiendo añadirle animaciónes y interaccion con el usuario a los mismos.
 
 En el caso de la página de las páginas de inicio de sesión y estadísticas, al solicitar las webs al servidor, este nos envía la estructura y diseño de la web, además del código javascript asociado a la página,  mediante el cual, se solicitarán de manera asíncrona, la información al servidor para completar las vistas. Por ejemplo, en el caso de acceder a la página principal, el servidor nos responde con una tabla vacía, que justo cuando se recibe, se realiza otra petición asíncrona al servidor que una vez resuelta, hará que los datos se muestren en el interior de la tabla. 
 
