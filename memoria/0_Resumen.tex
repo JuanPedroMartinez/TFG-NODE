@@ -2,14 +2,15 @@
 
 \addcontentsline{toc}{chapter}{Extended Abstract}
 
-Nowadays, Git\cite{git} is by far the most widely used modern version control system
-in the world. Version control is a system that records changes to a
-file or set of files over time so that you can recall specific versions
-later. Git is a mature and actively maintained open source project, with
-tons of developers behind it. Originated and launched in 2005, by the
-creator of the Kernel of Linux systems, Linus Torvalds, has become a
-crucial tool for the development teams, bringing them better performance,
-flexibility, and security for their projects.
+Nowadays, Git\cite{git} is by far the most widely used modern version
+control system in the world. Version control is a system that records
+changes to a file or set of files over time so that you can recall
+specific versions later. Git is a mature and actively maintained open
+source project, with tons of developers behind it. Originated and
+launched in 2005, by the creator of the Kernel of Linux systems, Linus
+Torvalds, has become a crucial tool for the development teams,
+bringing them better performance, flexibility, and security for their
+projects.
 
 Some of the reasons that make this tool so widely used may
 be,~(i)~Teamwork, allowing parallel development on a project with a shared
@@ -43,20 +44,21 @@ data offered by their student’s repositories, especially when the number of
 repositories increases. Imagine a professor who teaches different subjects,
 and for each of them the students use different repositories.
 
-Currently, the are some solutions for the problem, such as the stats panels
-of Git service providers, such as GitHub\cite{GitHub} or GitLab\cite{GitLab}. However in case of
-GitHub, these stats can only be consulted on public repositories, to be
-able of check them at private repositories, a premium account is needed
-under a monthly subscription. On the other hand, GitLab stats panel is
-offered for private repositories for free, but access to the changes made
-in the repository cannot be easily visualized together with the stats,
-having to open another page for viewing them, becoming somewhat tedious in
+Currently, the are some solutions for the problem, such as the stats
+panels of Git service providers, such as GitHub\cite{GitHub} or
+GitLab\cite{GitLab}. However in case of GitHub, these stats can only
+be consulted on public repositories, to be able of check them at
+private repositories, a premium account is needed under a monthly
+subscription. On the other hand, GitLab stats panel is offered for
+private repositories for free, but access to the changes made in the
+repository cannot be easily visualized together with the stats, having
+to open another page for viewing them, becoming somewhat tedious in
 the case of have many repositories.
 
 These services providers, GitHub and GitLab, also offer payment plans
 dedicated to education, these plans include multiple advantages, being more
 interesting in the case of GitHub, offering a tool designed exclusively for
-education “GitHub ClassRoom”, this tool allows the creation of virtual
+education ``GitHub ClassRoom'', this tool allows the creation of virtual
 classrooms, where teachers can create templates of projects and share for
 the students, create homeworks for the students which can be self-assessed,
 assign work teams, in addition of have full control of the changed made by
@@ -146,11 +148,15 @@ during the development of the assigned work.
 
 Turning now to the implementation of the software, there were
 different alternatives, as for the development of the web server, the
-possibility of using Python\cite{Python,PhytonGithub} with the Flask\cite{Flask} framework, or using NodeJS\cite{NodeJS,nodeDoc,CodeShack}
-based on the Express\cite{ExpressJS,GitBook,DevDocs} framework. Finally, the decision was to use NodeJS given the good integration of the JSON\cite{json} format used by the Github
-API through which we retrieve the data from the repositories, in
-addition to the many possibilities that the Express Framework offer
-for the development of simple API REST.
+possibility of using Python\cite{Python,PhytonGithub} with the
+Flask\cite{Flask} framework, or using
+NodeJS\cite{NodeJS,nodeDoc,CodeShack} based on the
+Express\cite{ExpressJS,GitBook,DevDocs} framework. Finally, the
+decision was to use NodeJS given the good integration of the
+JSON\cite{json} format used by the Github API through which we
+retrieve the data from the repositories, in addition to the many
+possibilities that the Express Framework offer for the development of
+simple API REST.
 
 Regarding the persistence of the data, necessary in this case for the
 data of both the users and the subjects created, a MySQL\cite{MySQL}
@@ -197,8 +203,8 @@ services developed in order to facilitate deployment in a cloud
 service.
 
 To do this, all services must offer a container based implementation,
-in this case using Docker\cite{Docker} container technology, currently, one of
-the most relevant technologies for this task.
+in this case using Docker\cite{Docker} container technology,
+currently, one of the most relevant technologies for this task.
 
 The structure of the application is divided into~3 containers, a
 dedicated container for the database, which must configure a volume to
@@ -221,21 +227,22 @@ has been raised and evolved.
 
 In addition, for the development of the work, a private Git repository
 was shared, where the tutor could check the progress and see the
-entire project to help me with the queries.
+entire project to follow the development.
 
 To conclude, comment that the development of the project has entailed
 a lot of work, but it has been a very rewarding experience, and key to
 consolidating technologies that are currently on rise, such as the
 development of microservices and the collaboration between them to
 provide solutions for multiple problems, and its subsequent deployment
-on cloud architectures.
+on cloud architectures. The developed tool can help the teachers of
+the Faculty to maintain their students' repositories statistics.
 
 In my opinion, the project after the development and implementation is
 a fully usable tool that meets the requirements established for the
 project. Nevertheless, the tool can be improved in many ways, among
 which we highlight the integration with GitLab services, another of
 the great known as Git service provider and which even being smaller
-than GitHub, It also has a great community, or the implementation of
+than GitHub, it also has a great community, or the implementation of
 new features such as the ability to download repositories, make
 commits, etc. On the other hand, it could be used as a starting point
 for the development of a classroom tool, where projects can be created
@@ -286,20 +293,21 @@ etc.
 
 \addcontentsline{toc}{chapter}{Resumen}
 
-Hoy en día, Git\cite{EDteam,CodicesSoftware,Uqbar,Sivsa} es, con diferencia el sistema de control de versiones
-moderno más utilizado en todo el mundo, es un proyecto de código
-abierto maduro y con un mantenimiento activo con infinidad de
-desarrolladores que lo respaldan. Originado y lanzado en 2005, por el
-famoso creador del núcleo del sistema operativo de linux, Linus
-Torvalds, se ha convertido en una herramienta casi indispensable en
-los equipos de desarrollo software, ofreciendo un mejor rendimiento,
-flexibilidad y seguridad al equipo de desarrollo. Entre los múltiples
-motivos por los que Git se ha convertido en uno de los sistemas de
-control de versiones más utilizados, encontramos trabajo en equipo en
-tiempo real con acceso compartido, autonomía, velocidad de las
-operaciones, estructura en árbol contando con diferentes ramas para
-facilitar pruebas y vías alternativas en el desarrollo, escalabilidad,
-código libre y apoyo de la comunidad.
+Hoy en día, Git\cite{EDteam,CodicesSoftware,Uqbar,Sivsa} es, con
+diferencia el sistema de control de versiones moderno más utilizado en
+todo el mundo, es un proyecto de código abierto maduro y con un
+mantenimiento activo con infinidad de desarrolladores que lo
+respaldan. Originado y lanzado en 2005, por el famoso creador del
+núcleo del sistema operativo de linux, Linus Torvalds, se ha
+convertido en una herramienta casi indispensable en los equipos de
+desarrollo software, ofreciendo un mejor rendimiento, flexibilidad y
+seguridad al equipo de desarrollo. Entre los múltiples motivos por los
+que Git se ha convertido en uno de los sistemas de control de
+versiones más utilizados, encontramos trabajo en equipo en tiempo real
+con acceso compartido, autonomía, velocidad de las operaciones,
+estructura en árbol contando con diferentes ramas para facilitar
+pruebas y vías alternativas en el desarrollo, escalabilidad, código
+libre y apoyo de la comunidad.
 
 Tanto ha sido el auge de esta tecnología, que múltiples facultades
 relacionadas con el software, lo integran en sus docencias, formando
@@ -381,14 +389,16 @@ Para la implementación del software, se utilizarán tecnologías NodeJS
 para el desarrollo del backend dando soporte al mismo mediante una
 base de datos MySQL. Por otra parte, en cuanto a la contenerización de
 la aplicación, se utilizará Docker para la generación y posterior
-despliegue\cite{InitMySQLDocker,MYSQL-DOckerHUB,Docean-docker,Docean-dockerCompose} de los contenedores mediante Docker-Compose.
+despliegue\cite{InitMySQLDocker,MYSQL-DOckerHUB,Docean-docker,Docean-dockerCompose}
+de los contenedores mediante Docker-Compose.
 
 Para concluir, comentar que el desarrollo del proyecto, ha conllevado
 bastante trabajo, pero ha sido una experiencia muy gratificante, y
 clave para profundizar en tecnologías en auge en plena actualidad,
 como son el desarrollo de los microservicios y la colaboración entre
-ellos para dar solución a múltiples problemas , y su posterior
+ellos para dar solución a múltiples problemas, y su posterior
 despliegue sobre arquitecturas cloud.
+
 %%% Local variables:
 %%% TeX-master: "memoria.tex"
 %%% coding: utf-8
