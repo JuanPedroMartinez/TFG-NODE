@@ -1,4 +1,4 @@
-\chapter{Introducción\label{01intro}}
+\chapter{Introducción y motivación\label{01intro}}
 
 % En los últimos años, el volumen de datos consumidos por muchas
 % organizaciones ha explotado, debido a la explosión de la web, La llamada
@@ -52,19 +52,10 @@ surgiendo sobre el repositorio, y además ofrece la posibilidad de la
 creación de \textit{ramas}, siendo estas diferentes caminos que puede ir
 tomando el proyecto, pudiendo combinarlas o descartarlas.
 
-\hilight{Quizá juntaría la introducción y motivación en una sola sección,
-  Introducción y Motivación}
+%\hilight{Quizá juntaría la introducción y motivación en una sola sección,
+ % Introducción y Motivación}
 
-\section{Motivación\label{01intro_motivacion}}
-
-% En la actualidad el número de Sistemas Gestores de Bases de Datos (de
-% aquí en adelante SGDB) ha aumentado en gran medida, sobre todo en el
-% campo de las bases de datos NoSQL (según
-% \href{http://db-engines.com}{DB-Engines} de las 354 SGDB listadas 223 son
-% NoSQL). Esto es provocado por la creación de nuevos softwares de
-% almacenamiento masivo y las facilidades que aportan los almacenamientos
-% noSQL como la supresión de esquemas (schemaless) que hace muy fácil su
-% utilización y versatilidad en diversos campos.
+%\section{Motivación\label{01intro_motivacion}}
 
 Para comprender el impacto que tuvo Git a partir de su creación y los
 motivos por los cuales a día de hoy es la primera opción de casi el~90\% de
@@ -117,22 +108,46 @@ realizados en cada archivo del proyecto, también conocido como
 
 \section{Objetivos}
 
-El desarrollo del trabajo esta enfocado principalmente:
+
+Este proyecto pretende ofrecer una herramienta desarrollada en la facultad de Informática de la Universidad de Murcia, que permita analizar los repositorios de Git en múltiples casos usados por sus alumnos, facilitando la tarea de la corrección, y aportando la información que refleja el trabajo por parte de los alumnos al trabajar en sus repositorios. Pudiendo obtener de dichos datos, la frecuencia de trabajo de los alumnos, casos en los que puede que algún alumno haya tenido un mayor desempeño y carga de trabajo que otro.
+
+Por otra parte, se tiene como objetivo poder llevar la herramienta desarrollada a un servicio real, pudiendo hacer accesible el servicio para la facultad, por lo que el servicio debe contar con una arquitectura que permita su despliegue y escalado.
+
+Como requisitos del proyecto encontramos:
 
 \begin{itemize}
-
-\item El desarrollo de un software capaz de gestionar estadísticas sobre
+  \item El desarrollo de un software capaz de gestionar estadísticas sobre
   repositorios Git en los que se participa como colaborador, a. Para su
   implementación se lleva a cabo el desarrollo de una aplicación web,
   accediendo el usuario mediante el navegador de preferencia.
-
-\item Implementación de un esquema de desarrollo basado en una arquitectura
+  \item Implementación de un esquema de desarrollo basado en una arquitectura
   de microservicios, es decir, implementación de servicios de no gran
   tamaño, intercomunicados por API bien definidas, ofrecidos en forma de
   contendores Docker, ofreciendo una capa de automatización para el
   despliegue en multiples sistemas operativos, que posteriormente puedan
   ser llevados a un sistema cloud permitiendo su escalado.
+	\item Gestión de cuentas para el profesorado, contando con la posibilidad de realizar un registro, y posteriormente un login con la cuenta creada.
+	\item Cada tutor debe contar con un token de GitHub que se introducirá junto con el registro, de tal forma que el software pueda acceder a los repositorios privados del tutor.
+	\item El software debe facilitar la gestión de asignaturas, donde los tutores puedan representar sus asignaturas, utilizando una cadena de coincidencia, que los alumnos introducirán en en nombre del repositorio, de tal forma que se realice el filtrado de los repositorios de cada asignatura.
+	\item Se debe ofrecer la posibilidad de añadir un repositorio concreto en una asignatura, de forma persistente, para aquellos casos en los que la cadena de coincidencia no sea correctamente introducida por los alumnos.
+	\item Se ofrece una barra de búsqueda por cadena de caracteres para el filtrado de los repositorios.
+	\item Se muestran estadísticas sobre el número de colaboradores del proyecto, y su identificación.
+	\item Se muestran estadísticas sobre el número de commits totales realizados por cada contribuyente y la distribución en el curso de los mismos.
+	\item Se muestra de forma simple y clara el contenido de los commits (Patch), pudiendo visualizar los cambios realizados sobre cada archivo del repositorio.
+ 
+	
 \end{itemize}
+
+Por otra parte, en cuanto los requisitos del usuario:
+\begin{itemize}
+	\item Se ofrecera una interfaz simple, intuitiva y fácil de aprender para el usuario.
+	\item Para permitir el acceso a la aplicación se debe realizar un registro previo, y posteriormente se puede realizar un inicio de sesión con la cuenta previamente creada.
+	\item El profesorado debe contar con una cuenta válida de GitHub, cuyo nombre de usuario debe ser el mismo que el creado en la cuenta para el servicio implementado.
+ 	\item El usuario debe poseer un token de GitHub, con al menos permiso de lectura de tanto repositorios privados como públicos. En el anexo primero, se encuentra una especificación para la obtención de un token y su configuración en caso de no contar con el mismo.
+	\item El profesorado indica a sus alumnos que se creen los repositorios para las asignaturas con un patrón claro, permitiendo así su filtrado, por ejemplo, indicando a los alumnos que se debe incluir en el nombre de los repositorios la cadena ``asginatura-curso''. De esta forma, se permite al usuario/tutor realizar un filtrado simple de los repositorios de su cuenta Git, permitiendo asignar a cada asignatura un nombre y una cadena de coincidencias, la cual coincide con lo indicado a los alumnos. Así el profesor puede encontrar rápidamente los repositorios de cada asignatura, accediendo con la interfaz a la misma. En el anexo primero, se encuentra la guía completa sobre la creación de asignaturas y filtrado de repositorios.
+	\item Se permite al usuario, añadir repositorios sobre alguna asignatura de forma manual, solucionando el caso en que algún alumno no añada al nombre del repositorio la cadena indicada por el profesor.
+\end{itemize}
+
 
 
 \section{Metodología}
