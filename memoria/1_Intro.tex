@@ -32,17 +32,17 @@
 % posible.
 
 Un sistema de control de versiones (VCS, por sus siglas en inglés), es una
-herramienta o software, que monitoriza y gestiona cambios en un sistema de
+herramienta o software que monitoriza y gestiona cambios en un sistema de
 archivos, es decir, se encarga de la monitorización de la adición,
 eliminación y modificación aplicadas a archivos y directorios. El primer
-sistema de control de versiones, surge en 1990, con el nombre de CVS ({\em
+sistema de control de versiones, surge en~1990, con el nombre de CVS ({\em
   Concurrent Version System}), capaz de gestionar multiples versiones
 desarrolladas de forma concurrente en diferentes máquinas y almacenadas en
 un servidor central. En la actualidad, el sistema de control de versiones
-mas usado es Git\cite{git}, desarrollado por Linux Torvalds (creador de
-Linux) y lanzado en el 2005, su creador, buscaba mejorar la eficiencia,
-confiabilidad y compatibilidad respecto las alternativas existentes, que el
-mismo criticaba. Este controlador de versiones esta basado en un grafo
+mas usado es Git\cite{git}, desarrollado por Linus Torvalds (creador de
+Linux) y lanzado en~2005. Su creador buscaba mejorar la eficiencia,
+confiabilidad y compatibilidad respecto las alternativas existentes, que él
+mismo criticaba. Este controlador de versiones está basado en un grafo
 acíclico dirigido, donde cada nodo representa una entidad susceptible a
 modificaciones.
 
@@ -52,7 +52,10 @@ surgiendo sobre el repositorio, y además ofrece la posibilidad de la
 creación de \textit{ramas}, siendo estas diferentes caminos que puede ir
 tomando el proyecto, pudiendo combinarlas o descartarlas.
 
-
+\hilight{Faltaría decir resumido qué se quiere, más o menos repetir lo
+  mismo que en el resumen. En este proyecto se quiere hacer una aplicación
+  que facilite a los profesores gestionar los respositorios git de los
+  alumnos, donde se pueden tener varias asignaturas, etc.}
 
 \section{Motivación\label{01intro_motivacion}}
 
@@ -64,31 +67,32 @@ tomando el proyecto, pudiendo combinarlas o descartarlas.
 % almacenamiento masivo y las facilidades que aportan los almacenamientos
 % noSQL como la supresión de esquemas (schemaless) que hace muy fácil su
 % utilización y versatilidad en diversos campos.
-Para comprender el impacto que tuvo Git a partir de su creación y los
-mótivos por los cuales a dia de hoy es la primera opción de casi el 90\% de
-los desarrolladores, destacaremos algunos de sus principales puntos
-fuertes, (i) Trabajo en equipo, permite el desarrollo en paralelo sobre un
-proyecto con un acceso compartido (ii)Autonomía, cada trabajador cuenta con
-una copia en local de todo el proyecto y los cambios generados, permitiendo
-el trabajo de forma individual, el cualquier momento. (iii) Velocidad,
-necesita menos capacidad de procesamiento y gestión al realizar las
-operaciones en local (iv) Estructura en árbol, el equipo de trabajo puede
-contar con diferentes ramas, sobre las que se realizan cambios sin
-modificar el código base principal, facilitando así las pruebas y caminos
-alternativos en el desarrollo. (v) Escalabilidad, código libre,
-multiplataforma y apoyo de la comunidad.
 
-Es por ello, que Git es una de las herramientas que los alumnos de la
-facultad de informática de la Universidad de Murcia deben adquirir, conocer
-y trabajar. Usandose en multiples asignatuaras, para el control de
-versiones del trabajo de los alumnos, permitiendo la colaboración en los
-equipos de trabajo. En estos proyectos, el profesorado indica que se debe
-crear un repositorio, donde tanto los alumnos del equipo de trabajo como el
-profesor deben ser colaboradores, de esta forma, el profesor tiene acceso
-pleno al repositorio pudiendo, así valorar el trabajo de los alumnos y
-analizando como ha sido su progresión durante el desarrollo del proyecto,
-tanto tiempo dedicado, número de commits por alumno, tiempo que se ha
-dedicado a la realización del proyecto etc.
+Para comprender el impacto que tuvo Git a partir de su creación y los
+motivos por los cuales a día de hoy es la primera opción de casi el~90\% de
+los desarrolladores. Destacaremos algunos de sus principales puntos
+fuertes,~(i)~Trabajo en equipo, permite el desarrollo en paralelo sobre un
+proyecto con un acceso compartido.~(ii)~Autonomía, cada trabajador cuenta
+con una copia en local de todo el proyecto y los cambios generados,
+permitiendo el trabajo de forma individual, en cualquier
+momento.~(iii)~Velocidad, necesita menos capacidad de procesamiento y
+gestión al realizar las operaciones en local.~(iv)~Estructura en árbol, el
+equipo de trabajo puede contar con diferentes ramas, sobre las que se
+realizan cambios sin modificar el código base principal, facilitando así
+las pruebas y caminos alternativos en el desarrollo.~(v)~Escalabilidad,
+código libre, multiplataforma y apoyo de la comunidad.
+
+Es por ello que Git es una de las herramientas que los alumnos de la
+Facultad de Informática de la Universidad de Murcia deben conocer y
+trabajar. Usándose en multiples asignaturas para el control de versiones
+del trabajo de los alumnos, permitiendo la colaboración en los equipos de
+trabajo. En estos proyectos, el profesorado indica que se debe crear un
+repositorio, donde tanto los alumnos del equipo de trabajo como el profesor
+deben ser colaboradores, de esta forma, el profesor tiene acceso pleno al
+repositorio pudiendo así valorar el trabajo de los alumnos y analizando
+cómo ha sido su progresión durante el desarrollo del proyecto, tanto tiempo
+dedicado, número de commits por alumno, tiempo que se ha dedicado a la
+realización del mismo, etc.
 
 Como se puede apreciar, esta herramienta también es útil de cara a la
 evaluación por parte del profesorado, sin embargo, surge un problema de
@@ -116,6 +120,7 @@ realizados en cada archivo del proyecto, también conocido como
 \section{Objetivos}
 
 El desarrollo del trabajo esta enfocado principalmente:
+
 \begin{itemize}
 
 \item El desarrollo de un software capaz de gestionar estadísticas sobre

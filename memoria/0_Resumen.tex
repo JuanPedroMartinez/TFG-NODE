@@ -294,11 +294,11 @@ etc.
 \addcontentsline{toc}{chapter}{Resumen}
 
 Hoy en día, Git\cite{EDteam,CodicesSoftware,Uqbar,Sivsa} es, con
-diferencia el sistema de control de versiones moderno más utilizado en
-todo el mundo, es un proyecto de código abierto maduro y con un
+diferencia, el sistema de control de versiones moderno más utilizado
+en todo el mundo. Es un proyecto de código abierto maduro y con un
 mantenimiento activo con infinidad de desarrolladores que lo
-respaldan. Originado y lanzado en 2005, por el famoso creador del
-núcleo del sistema operativo de linux, Linus Torvalds, se ha
+respaldan. Originado y lanzado en~2005, por el famoso creador del
+núcleo del sistema operativo Linux, Linus Torvalds, se ha
 convertido en una herramienta casi indispensable en los equipos de
 desarrollo software, ofreciendo un mejor rendimiento, flexibilidad y
 seguridad al equipo de desarrollo. Entre los múltiples motivos por los
@@ -310,24 +310,24 @@ pruebas y vías alternativas en el desarrollo, escalabilidad, código
 libre y apoyo de la comunidad.
 
 Tanto ha sido el auge de esta tecnología, que múltiples facultades
-relacionadas con el software, lo integran en sus docencias, formando
+relacionadas con el software lo integran en sus docencias, formando
 parte de la propia evaluación. Cuando esto ocurre, los alumnos forman
 sus repositorios a los cuales el profesor tiene acceso, de esta forma
-el o los alumnos trabajan progresivamente, permitiéndoles el trabajo
+los alumnos trabajan progresivamente, permitiéndoles el trabajo
 cooperativo en tiempo real.
 
-Por otro lado, el profesorado, puede analizar posteriormente el
-trabajo de los alumnos comprobando los cambios realizados en el
-repositorio, de tal forma que puede observar que cambios ha hecho cada
-alumno, cómo se han repartido el trabajo, sobrecarga de algún alumno
-respecto al resto y de esta forma ofrecer una calificación lo más
-justa posible.
+Por otro lado, el profesorado puede analizar posteriormente el trabajo
+de los alumnos comprobando los cambios realizados en el repositorio,
+de tal forma que puede observar qué cambios ha hecho cada alumno, cómo
+se han repartido el trabajo, sobrecarga de algún alumno respecto al
+resto, y de esta forma ofrecer una calificación lo más justa posible.
 
 Sin embargo, de cara al profesorado, puede ser complicado comprobar
 los datos ofrecidos por los repositorios de sus alumnos, especialmente
-cuando el número de alumnos se incrementa.
+cuando el número de alumnos se incrementa, y quizá el profesor
+gestiona más de una asignatura.
 
-Actualmente, existen algunas soluciones existentes para el problema,
+Actualmente, existen algunas soluciones para tratar el problema,
 como pueden ser los paneles de estadísticas de proveedores de
 servicios Git como Github o Gitlab. Sin embargo, estas alternativas,
 posteriormente analizadas en los posteriores capítulos, en algunos
@@ -337,8 +337,8 @@ terminan de ser fácilmente aplicables para el contexto en el que se
 quieren usar, siendo una tarea tediosa cuando el número de
 repositorios a analizar es grande.
 
-Estos proveedores de servicios, también ofrecen planes de pago
-dedicados a la educación, estos planes, incluyen múltiples ventajas,
+Estos proveedores de servicios también ofrecen planes de pago
+dedicados a la educación. Estos planes incluyen múltiples ventajas,
 siendo más interesantes en el caso de GitHub, ofreciendo una
 herramienta dedicada a la creación de aulas virtuales, donde mediante
 repositorios, se puede compartir plantillas creadas por el profesor,
@@ -349,14 +349,14 @@ múltiples estadísticas y facilidades para el control de los alumnos,
 permitiendo una interacción rápida y directa.
 
 Por tanto, se quiere desarrollar un software, desarrollado en la
-facultad de informática de la universidad de Murcia, que permita a los
+Facultad de Informática de la Universidad de Murcia, que permita a los
 profesores, gestionar la información de los repositorios de sus
 alumnos, obteniendo estadísticas acerca de ellos, simplificando su
 tarea, y iniciando un proyecto con amplio margen de mejora, con la
 posibilidad de implementar nuevas funcionalidades.
 
 Además, se pretende ofrecer una implementación útil para el despliegue
-en un servicio cloud, de tal forma que los servicios, estén basados en
+en un servicio cloud, de tal forma que los servicios estén basados en
 contenedores, que puedan ser lanzados en una estructura de nodos
 cloud, permitiendo así su control y escalado.
 
@@ -368,31 +368,33 @@ posteriormente podrá registrar sus asignaturas, pudiendo filtrar sus
 repositorios por cadenas de coincidencia y añadir repositorios de
 forma manual a sus asignaturas. Para su registro, cada profesor debe
 contar con un token de autenticación obtenido en la página oficial de
-github, con el que se dará acceso a la aplicación a los repositorios
+Github, con el que se dará acceso a la aplicación a los repositorios
 privados.
 
 Una vez completado el registro, se puede acceder a la aplicación y
 visualizar en la página principal todos los repositorios en los que se
-participa como colaborador. Además, se ofrece una barra de búsqueda,
+participa como colaborador. Además, se ofrece una barra de búsqueda
 para el filtrado de los repositorios que coincidan con una cadena de
 caracteres y filtrado por asignaturas creadas previamente. Sobre
-cualquier de los que se visualizan se puede hacer click para acceder a
-las estadísticas del repositorio. Obteniendo información acerca de los
-colaboradores del repositorio, el número total de commits realizados
-por cada colaborador, la distribución temporal de los commits, es
-decir, cuantos commits se han realizado en cada mes del curso, y el
-contenido de los cambios realizados en el proyecto en cada commit. Con
-esta información el profesor puede evaluar el desempeño de los alumnos
-durante el desarrollo del trabajo asignado.
+cualquiera de los repositorios que se visualizan se puede pulsar
+para acceder a las estadísticas del repositorio. Obteniendo
+información acerca de los colaboradores del repositorio, el número
+total de commits realizados por cada colaborador, la distribución
+temporal de los commits, es decir, cuantos commits se han realizado en
+cada mes del curso, y el contenido de los cambios realizados en el
+proyecto en cada commit. Con esta información el profesor puede
+evaluar el desempeño de los alumnos durante el desarrollo del trabajo
+asignado.
 
 Para la implementación del software, se utilizarán tecnologías NodeJS
-para el desarrollo del backend dando soporte al mismo mediante una
-base de datos MySQL. Por otra parte, en cuanto a la contenerización de
-la aplicación, se utilizará Docker para la generación y posterior
+para el desarrollo del \emph{backend} dando soporte al mismo mediante
+una base de datos MySQL. Por otra parte, en cuanto a la
+contenerización de la aplicación, se utilizará Docker para la
+generación y posterior
 despliegue\cite{InitMySQLDocker,MYSQL-DOckerHUB,Docean-docker,Docean-dockerCompose}
 de los contenedores mediante Docker-Compose.
 
-Para concluir, comentar que el desarrollo del proyecto, ha conllevado
+Para concluir, comentar que el desarrollo del proyecto ha conllevado
 bastante trabajo, pero ha sido una experiencia muy gratificante, y
 clave para profundizar en tecnologías en auge en plena actualidad,
 como son el desarrollo de los microservicios y la colaboración entre
