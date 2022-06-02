@@ -2,15 +2,20 @@
 
 \hilight{Aquí cambiar como hemos hablado de justificar la elección de node
   por los requisitos especificados al final del capítulo anterior.}
-El proyecto, como ya se comentó en la aplicación está desarrollado
-principalmente con NodeJS sirviéndose del framework Express, dicha elección
-tuvo relevancia frente al uso de Python, con el cual previamente se
-realizaron algunas pruebas\cite{PhytonGithub,GitHubWrappers} y finalmente
-se implementó con el framework Express dada la buena integración del
+
+En cuanto el diseño del proyecto y los requerimientos del mismo, encontramos las siguientes entidades claramente diferenciadas:
+\begin{itemize}
+  \item \emph{Asignatura}: Entidad con un identificador formado por un cógido alfanumérico y una cadena de coincidencias para un posterior filtrado de los repositorios. Una asignatura además tiene una lista de repositorios que han sido añadidos en la misma.
+  \item \emph{Repositorio}: Sujeto que representa un repositorio Git concreto, identificado a través del nombre del repositorio y su propietario.
+  \item \emph{Usuario}: Constituidos por el profesorado, representan una entidad usuario, del cual interesa conocer su descripcion, nombre, usuario, email y token para la autorización. Cada profesor a su vez puede dar de alta y gestionar sus asignaturas.
+\end{itemize}
+
+En cuanto a la asociación entre las entidades del proyecto, vemos que un usuario puede gestionar sus asignaturas, pudiendo darlas de alta y añadir sobre las mismas repositorios de forma manual. Por otra parte, el usuario indica la cadena que identifica las asignaturas y su cadena de coincidencias para el filtrado de los repositorios del usuario.
+
+Dados los requisitos de la aplicación, analizados en el apartado anterior, se planteó la posibilidad de una implementación con tecnologías Fask-Phyton o Express-NodeJS. Tras un periodo de investigación y análisis de las alternativas, se seleccionó una implementación basada en NodeJS con el uso del framework Express, la elección final se basa esencialmente en la buena integración del
 lenguaje Javascript con el formato JSON, y la facilidad que ofrece para
 realizar peticiones a un API REST que proporciona los datos en un formato
-JSON. En este caso, todos los datos de los repositorios, deben ser
-recuperados a través del proveedor de servicios Git, en este caso GitHub.
+JSON. Además de la existente implementación de la librería “Octokit”\cite{Octokit,OctokitDoc}, a través de la cual podremos autenticar al usuario a través de un token de GitHub, para posteriormente poder recuperar los datos asociados a su cuenta, mediante comunicaciones con GitHub.
 
 GitHub ofrece un completo API REST mediante el cual se puede realizar un
 control total de la herramienta Git sobre la cuenta de un usuario. Para
@@ -44,7 +49,13 @@ fácil integración de los datos a persistir con el modelo relacional, con
 una estructura basada en tablas. Para la integración del servidor web, con
 la base de datos, se utiliza la librería mysql para NodeJS. A través de la
 misma, podremos mantener y actualizar la información procedente de las
-acciones de los usuarios en la página web.
+acciones de los usuarios en la página web. En la figura~\ref{figure:MySQLDraw}, encontramos un esquema EER (Enhanced Entity-Relationship), del proyecto desarrollado, en el cual podemos observar que datos se persisten y las características de los mismos.
+
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{DDBBSchema.png}
+  \caption{Esquema entidad-relación de la aplicación desarrollada.}
+  \label{figure:MySQLDraw}
+\end{figure}
 
 Mediante la implementación del servidor web y el servicio de persistencia,
 podríamos obtener una solución viable y funcional. Sin embargo, es
@@ -118,7 +129,7 @@ cada servicio en medida de la sobrecarga que se produzca.
 \section{Consulta de datos al API de GitHub y autenticación}
 
 Para la implementación de la aplicación se utiliza la librería
-“Octokit”\cite{Octokit,OctokitDoc}, una librería ofrecida de forma oficial
+“Octokit”, una librería ofrecida de forma oficial
 por el proveedor de servicios, y que se integra con el lenguaje Javascript.
 Mediante ella, podemos realizar las consultas al API de Github de una
 manera sencilla y teniendo acceso a operaciones de repositorios privados,
@@ -141,6 +152,13 @@ de un objeto “Octokit”, objeto ofrecido por la librería, mediante el cual
 posteriormente se realizarán las peticiones HTTP, para su creación le
 brindamos el token del usuario, necesario para poder leer la información de
 sus repositorios.
+
+En el caso de nuestro desarrollo, será el segundo servidor, el proxy a GitHub, el que integrará la librería octokit a través de la cual se autorizará al usuario mediante uso de token, pudiendo así recuperar los datos del mismo. En el gráfico~\ref{figure:octokitGitApi}, encontramos una visión del funcionamiento de la librería Octokit para la autorización y posterior acceso a los datos. 
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{OctokitGithubAPI.png}
+  \caption{Gráfico de funcionamiento de la librería Octokit y peticiones al API REST de GitHub.}
+  \label{figure:octokitGitApi}
+\end{figure}  
 
 
 \section{Maquetado de la aplicación web}
@@ -206,107 +224,12 @@ forma automática. Además, ofrece posibilidades como el escalado automático
 en momentos donde la carga de trabajo está creciendo de manera paulatina,
 repartiendo así la carga de trabajo y evitando el colapso.
 
-\hilight{A continuación iría en el apéndice, y aquí diría que con lo
-  mostrado hasta ahora de contenedores se cumple el requisito de que la
-  aplicación fuera basada en contenedores}
+Con la implementación de lo comentado, validaríamos el requisito de la contenerización de la aplicación y la posibilidad de la integración del proyecto sobre un entorno Cloud.
 
-En caso de querer realizar un despliegue normal, bien sea, en un ordenador
-personal o en un servidor, se ofrecen dos alternativas de despliegue:
+%\hilight{A continuación iría en el apéndice, y aquí diría que con lo
+%  mostrado hasta ahora de contenedores se cumple el requisito de que la
+%  aplicación fuera basada en contenedores}
 
-\begin{enumerate}
-\item Desplegar los servidores de manera manual, iniciándose mediante
-  consola. Usando para ello los comandos:
-  \begin{itemize}
-  \item \textit{“npm install“},para instalar las dependencias necesarias,
-    en caso de no estas previamente instaladas.
-  \item \textit{“node app.js“}, para lanzar el servidor, quedando en
-    escucha en el puerto 3000.
-  \end{itemize}
-
-  Este proceso debemos repetirlo también para el segundo servidor contenido
-  en la carpeta “restjs”, cambiando el segundo comando por “node app2.js”.
-
-  Con esto lanzaremos ambos servidores, pero tendríamos que tener instalada
-  y configurada una instancia de MySQL, la cual podríamos inicializar
-  utilizando el fichero “schema.sql” situado en la carpeta “scripts”.
-
-\item La segunda opción, por otro lado, sería utilizar el docker-compose
-  ofrecido junto el proyecto, para el cual únicamente deberíamos ejecutar
-  “docker compose up”.
-
-  Este comando se encargaría de construir las imágenes de ambos servidores,
-  recuperar una imagen oficial de MySQL desde el repositorio Docker Hub,
-  configurar los volúmenes necesarios, y crear y configurar la subred
-  necesaria para la intercomunicación de los mismos.
-
-
-\end{enumerate}
-
-\begin{lstlisting}
-version: '2'
-
-services:
-  nodejs:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: nodejs
-    container_name: nodejs
-    restart: unless-stopped
-    environment:
-      - MYSQL_HOST=db
-      - PROXY_REST=restjs
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/home/node/app
-
-  restjs:
-    build: ./restjs
-    restart: unless-stopped
-    ports:
-      - "3001:3001"
-    volumes:
-    - .:/home/node/restjs
-    expose:
-      # Opens port 3001 on the container
-      - '3001'
-
-
-  db:
-    image: mysql
-    restart: always
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_DATABASE: 'nodelogin'
-      # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'user'
-      # You can use whatever password you like
-      MYSQL_PASSWORD: 'root'
-      # Password for root access
-      MYSQL_ROOT_PASSWORD: 'root'
-    ports:
-      # <Port exposed> : < MySQL Port running inside container>
-      - '3005:3306'
-    expose:
-      # Opens port 3306 on the container
-      - '3005'
-      # Where our data will be persisted
-
-    volumes:
-      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
-
-\end{lstlisting}
-
-Vemos la configuración del fichero {\tt .yml} construido para el arranque
-de los servicios mediante Docker-Compose, es de destacar, la configuración
-de los servicios, introduciendo como variables de entorno los nombres
-asignados, de esta forma se resuelve el direccionamiento de forma
-automática, mediante una subred que crea Docker-Compose y mediante dichas
-variables posteriormente en el programa podemos acceder al resto de
-servicios configurados. Además, destacamos la configuración de los
-volúmenes, y la inicialización de la base de datos, para contruir el schema
-con un fichero de inicialización para MySQL.
 
 %%% Local variables:
 %%% TeX-master: "memoria.tex"

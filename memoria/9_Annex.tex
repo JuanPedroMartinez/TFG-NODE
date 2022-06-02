@@ -178,6 +178,93 @@ Este comando construirá las imágenes docker de los servicios creados, obtenien
 
 Tras esperar que el proceso se inicie y los servidores queden escuchando, y la base de datos esté lista para recibir conexiones, el proyecto estará completamente desplegado y funcionando.
 
+\begin{lstlisting}
+version: '2'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    environment:
+      - MYSQL_HOST=db
+      - PROXY_REST=restjs
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/app
+
+  restjs:
+    build: ./restjs
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+    - .:/home/node/restjs
+    expose:
+      # Opens port 3001 on the container
+      - '3001'
+
+
+  db:
+    image: mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: 'nodelogin'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'user'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'root'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3005:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3005'
+      # Where our data will be persisted
+
+    volumes:
+      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+
+\end{lstlisting}
+
+Vemos la configuración del fichero {\tt .yml} construido para el arranque
+de los servicios mediante Docker-Compose, es de destacar, la configuración
+de los servicios, introduciendo como variables de entorno los nombres
+asignados, de esta forma se resuelve el direccionamiento de forma
+automática, mediante una subred que crea Docker-Compose y mediante dichas
+variables posteriormente en el programa podemos acceder al resto de
+servicios configurados. Además, destacamos la configuración de los
+volúmenes, y la inicialización de la base de datos, para contruir el schema
+con un fichero de inicialización para MySQL.
+
+
+En caso de querer realizar un despliegue normal, sin el uso de la tecnología docker y usando un despliegue tradicional de NodeJS y MySQL, debemos realizar los siguientes pasos:
+
+\begin{enumerate}
+\item Desplegar los servidores de manera manual, iniciándose mediante
+  consola. Usando para ello los comandos:
+
+  \item \textit{“npm install“},para instalar las dependencias necesarias,
+    en caso de no estas previamente instaladas.
+  \item \textit{“node app.js“}, para lanzar el servidor, quedando en
+    escucha en el puerto 3000.
+\end{enumerate}
+
+  Este proceso debemos repetirlo también para el segundo servidor contenido
+  en la carpeta “restjs”, cambiando el segundo comando por “node app2.js”.
+
+  Con esto lanzaremos ambos servidores, pero tendríamos que tener instalada
+  y configurada una instancia de MySQL, la cual podríamos inicializar
+  utilizando el fichero “schema.sql” situado en la carpeta “scripts”.
+
+
 
   
 
