@@ -49,7 +49,10 @@ fácil integración de los datos a persistir con el modelo relacional, con
 una estructura basada en tablas. Para la integración del servidor web, con
 la base de datos, se utiliza la librería mysql para NodeJS. A través de la
 misma, podremos mantener y actualizar la información procedente de las
-acciones de los usuarios en la página web. En la figura~\ref{figure:MySQLDraw}, encontramos un esquema EER (Enhanced Entity-Relationship), del proyecto desarrollado, en el cual podemos observar que datos se persisten y las características de los mismos.
+acciones de los usuarios en la página web. En la
+figura~\ref{figure:MySQLDraw}, encontramos un esquema EER (Enhanced
+Entity-Relationship), del proyecto desarrollado, en el cual podemos
+observar que datos se persisten y las características de los mismos.
 
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{DDBBSchema.png}
@@ -148,17 +151,24 @@ API proporcionada.
 \end{figure}
 
 En la figura~\ref{figure:octokit} se muestra la creación e inicialización
-de un objeto “Octokit”, objeto ofrecido por la librería, mediante el cual
+de un objeto ``Octokit'', objeto ofrecido por la librería, mediante el cual
 posteriormente se realizarán las peticiones HTTP, para su creación le
 brindamos el token del usuario, necesario para poder leer la información de
 sus repositorios.
 
-En el caso de nuestro desarrollo, será el segundo servidor, el proxy a GitHub, el que integrará la librería octokit a través de la cual se autorizará al usuario mediante uso de token, pudiendo así recuperar los datos del mismo. En el gráfico~\ref{figure:octokitGitApi}, encontramos una visión del funcionamiento de la librería Octokit para la autorización y posterior acceso a los datos. 
+En el caso de nuestro desarrollo, será el segundo servidor, el proxy a
+GitHub, el que integrará la librería octokit a través de la cual se
+autorizará al usuario mediante uso de token, pudiendo así recuperar los
+datos del mismo. En el gráfico~\ref{figure:octokitGitApi}, encontramos una
+visión del funcionamiento de la librería Octokit para la autorización y
+posterior acceso a los datos.
+
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{OctokitGithubAPI.png}
-  \caption{Gráfico de funcionamiento de la librería Octokit y peticiones al API REST de GitHub.}
+  \caption{Gráfico de funcionamiento de la librería Octokit y peticiones al
+    API REST de GitHub.}
   \label{figure:octokitGitApi}
-\end{figure}  
+\end{figure}
 
 
 \section{Maquetado de la aplicación web}
@@ -224,7 +234,9 @@ forma automática. Además, ofrece posibilidades como el escalado automático
 en momentos donde la carga de trabajo está creciendo de manera paulatina,
 repartiendo así la carga de trabajo y evitando el colapso.
 
-Con la implementación de lo comentado, validaríamos el requisito de la contenerización de la aplicación y la posibilidad de la integración del proyecto sobre un entorno Cloud.
+Con la implementación de lo comentado, validaríamos el requisito de la
+contenerización de la aplicación y la posibilidad de la integración del
+proyecto sobre un entorno Cloud.
 
 %\hilight{A continuación iría en el apéndice, y aquí diría que con lo
 %  mostrado hasta ahora de contenedores se cumple el requisito de que la
