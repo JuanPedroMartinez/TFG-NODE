@@ -1,7 +1,10 @@
 \chapter{Manual de usuario\label{09manual}}
 
-En caso de haber desplegado el proyecto en local, accedemos a la url \footnote{\url{http://localhost:3000}}.
-Una vez sobre la web, se nos muestra la interfaz de la figura~\ref{figure:inicioSesion} donde encontramos el clásico menú de login/registro.
+\section{Presentación}
+
+Una vez desplegado el proyecto, podemos acceder a la web, que se muestra en
+la figura~\ref{figure:inicioSesion} donde encontramos el clásico menú de
+login/registro.
 
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{incioSesion.png}
@@ -9,10 +12,22 @@ Una vez sobre la web, se nos muestra la interfaz de la figura~\ref{figure:inicio
   \label{figure:inicioSesion}
 \end{figure}
 
-Una vez situados en esta vista, tenemos dos alternativas, un botón para completar el proceso de registro y por tanto crear una cuenta para el usuario, o en caso de ya haber realizado el proceso de registro iniciar sesión con la cuenta creada. Para ello necesitaremos el nombre de usuario indicado (Como veremos en el proceso de registro este será, el mismo nombre de usuario que disponemos en nuestra cuenta de Github) y la contraseña indicada en el proceso de registro.
+Una vez situados en esta vista, tenemos dos alternativas, un botón para
+completar el proceso de registro y por tanto crear una cuenta para el
+usuario, o en caso de ya haber realizado el proceso de registro iniciar
+sesión con la cuenta creada. Para ello necesitaremos el nombre de usuario
+indicado (como veremos en el proceso de registro, este será el mismo nombre
+de usuario que disponemos en nuestra cuenta de Github) y la contraseña
+indicada en el proceso de registro.
 
 
-En caso de no estar registrados en la aplicación web, debemos completar dicho procedimiento, para ellos haciendo click en el botón de registro, se nos redirige directamente a la figura~\ref{figure:registro}. En ella debemos completar los siguientes campos, nombre de usuario, como se indica en la web, este debe coincidir con el usuario de Github, un token, el cual a continuación veremos el proceso de obtención, email y contraseña para el registro.
+En caso de no estar registrados en la aplicación web, debemos completar
+dicho procedimiento. para ello, haciendo click en el botón de registro, se
+nos redirige directamente a la figura~\ref{figure:registro}. En ella
+debemos completar los siguientes campos, nombre de usuario (como se indica
+en la web, este debe coincidir con el usuario de Github), un token, el cual
+a continuación veremos el proceso de obtención, email y contraseña para el
+registro.
 
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{registro.png}
@@ -21,25 +36,33 @@ En caso de no estar registrados en la aplicación web, debemos completar dicho p
 \end{figure}
 
 
-
 \section{Obtención de un token de GitHub}
 
-En primer lugar, debemos acceder a la página oficial de Github\cite{GitHub} y realizar el inicio de sesión con nuestra cuenta de trabajo. Posteriormente, accedemos al apartado de configuración como se aprecia en la Figura~\ref{figure:settingsGitHub}.
+En primer lugar, debemos acceder a la página oficial de Github\cite{GitHub}
+y realizar el inicio de sesión con nuestra cuenta de trabajo.
+Posteriormente, accedemos al apartado de configuración como se aprecia en
+la figura~\ref{figure:settingsGitHub}.
+
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{githubSettings.png}
   \caption{Acceso a los ajustes en la cuenta de GitHub.}
   \label{figure:settingsGitHub}
 \end{figure}
 
-Tras ello, nos llevará a la configuración de la cuenta, donde accederemos mediante el menú del lado izquierdo al submenú configuración de desarrolladores. Figura~\ref{figure:developerSettings}.
+Tras ello, nos llevará a la configuración de la cuenta, donde accederemos
+mediante el menú del lado izquierdo al submenú configuración de
+desarrolladores, figura~\ref{figure:developerSettings}.
 
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{githubDeveloperSetting.png}
-  \caption{Acceso a los ajusted de desarrollado de GitHub.}
+  \caption{Acceso a los ajustes de desarrollador de GitHub.}
   \label{figure:developerSettings}
 \end{figure}
 
-A continuación, nos muestra otro menú de apariencia similar en donde seleccionaremos de nuevo en el menú izquierdo el apartado Tokens de acceso personal, y tras ello haremos click generar un nuevo token [Figura~\ref{figure:tokensGitHub}].
+A continuación, nos muestra otro menú de apariencia similar en donde
+seleccionaremos de nuevo en el menú izquierdo el apartado Tokens de acceso
+personal, y tras ello haremos click generar un nuevo token
+(figura~\ref{figure:tokensGitHub}).
 
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{accessTokens.png}
@@ -47,24 +70,61 @@ A continuación, nos muestra otro menú de apariencia similar en donde seleccion
   \label{figure:tokensGitHub}
 \end{figure}
 
-Entonces, en la nueva vista [Figura~\ref{figure:configToken}] que nos aparece, tendremos múltiples opciones disponibles, las cuales se deben seleccionar en función de los requerimientos de cada tutor.
+Entonces, en la nueva vista (Figura~\ref{figure:configToken}) que nos
+aparece tendremos múltiples opciones disponibles, las cuales se deben
+seleccionar en función de los requerimientos de cada tutor.
+
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{newToken.png}
   \caption{Configuración del nuevo token a crear.}
   \label{figure:configToken}
 \end{figure}
 
-Encontramos el tiempo de expiración que tendrá el token, dejando de ser válido una vez que este tiempo expire, ofreciendo también la posibilidad de crear un token que no expire. A continuación nos aparecen múltiples seleccionables los cuales indican los privilegios que se otorgan mediante el token, pudiendo seleccionar entre lectura, escritura y modificación de los repositorios asociados a la cuenta. En el caso del proyecto desarrollado únicamente son imprescindibles los permisos de lectura, tanto de repositorios públicos, como privados, como serán normalmente los repositorios de los alumnos.
+Encontramos el tiempo de expiración que tendrá el token, dejando de ser
+válido una vez que este tiempo expire, ofreciendo también la posibilidad de
+crear un token que no expire. A continuación nos aparecen múltiples
+seleccionables los cuales indican los privilegios que se otorgan mediante
+el token, pudiendo seleccionar entre lectura, escritura y modificación de
+los repositorios asociados a la cuenta. En el caso del proyecto
+desarrollado únicamente son imprescindibles los permisos de lectura, tanto
+de repositorios públicos como privados, como serán normalmente los
+repositorios de los alumnos.
 
-Una vez seleccionados estas opciones, en la parte inferior encontramos un botón de confirmación para la generación del token y posteriormente se nos mostrará el token, este token consistirá en una cadena de caracteres alfanuméricos, los cuales deberemos conservar como se indica en la página, ya que únicamente podremos visualizarlo en el momento de la creación, y teniendo que borrar y generar uno nuevo en caso de pérdida. En cuanto al proyecto, este token se almacena con la información de la cuenta, por lo que una vez añadido ya quedaría funcionando sin necesidad de volverlo a añadir.
+Una vez seleccionados estas opciones, en la parte inferior encontramos un
+botón de confirmación para la generación del token y posteriormente se nos
+mostrará el token. Este token consistirá en una cadena de caracteres
+alfanuméricos, los cuales deberemos conservar como se indica en la página,
+ya que únicamente podremos visualizarlo en el momento de la creación, y
+teniendo que borrar y generar uno nuevo en caso de pérdida. En cuanto al
+proyecto, este token se almacena con la información de la cuenta, por lo
+que una vez añadido ya quedaría funcionando sin necesidad de volverlo a
+añadir.
 
-Una vez generado el token podremos realizar el proceso de registro, iniciando así sesión en la aplicación, y pudiendo volver a iniciar sesión posteriormente únicamente con el nombre de usuario y contraseña registrados.
+Una vez generado el token podremos realizar el proceso de registro,
+iniciando así sesión en la aplicación, y pudiendo volver a iniciar sesión
+posteriormente únicamente con el nombre de usuario y contraseña
+registrados.
 
 
-Tras el proceso de registro o inicio de sesión, en caso de completarse de manera satisfactoria y correcta, se visualizará la página principal del proyecto, en ella debemos observar los repositorios de nuestra cuenta de Github y repositorios en los cuales participamos como colaborador, esta información se verá reflejada en la tabla de la figura X.
-En caso de no visualizar los repositorios, es probable que haya habido algún problema en el proceso de creación del token y deberá repetirse.
+Tras el proceso de registro o inicio de sesión, en caso de completarse de
+manera satisfactoria y correcta, se visualizará la página principal del
+proyecto. En ella debemos observar los repositorios de nuestra cuenta de
+Github y repositorios en los cuales participamos como colaborador. Esta
+información se verá reflejada en la tabla de la
+figura~\ref{figure:mainPage}. En caso de no visualizar los repositorios, es
+probable que haya habido algún problema en el proceso de creación del token
+y deberá repetirse.
 
-En la página principal Figura~\ref{figure:mainPage}, observamos una interfaz simple mediante la cual podemos implementar la funcionalidad previamente explicada. En primer lugar, encontramos los repositorios asociados a nuestra cuenta, obteniendo la información a modo de tabla del nombre de cada repositorio y su correspondiente creador. Además, encontramos una celda con múltiples botones mediante los cuales podemos, ir directamente a la página de GitHub del repositorio correspondiente, copiar la url del repositorio  o un botón que como más adelante explicaremos, sirve para añadir un repositorio a alguna asignatura creada.
+En la página principal Figura~\ref{figure:mainPage}, observamos una
+interfaz simple mediante la cual el usuario puede realizar las tareas que
+se especificaron en los requisitos de la aplicación. En primer lugar,
+encontramos los repositorios asociados a nuestra cuenta, obteniendo la
+información a modo de tabla del nombre de cada repositorio y su
+correspondiente creador. Además, encontramos una celda con múltiples
+botones mediante los cuales podemos ir directamente a la página de GitHub
+del repositorio correspondiente, copiar la URL del repositorio o un botón
+que como más adelante explicaremos, sirve para añadir un repositorio a
+alguna asignatura creada.
 
 \begin{figure}[h!]
   \includegraphics[width=1\textwidth]{paginaPrincipal.png}
@@ -72,11 +132,16 @@ En la página principal Figura~\ref{figure:mainPage}, observamos una interfaz si
   \label{figure:mainPage}
 \end{figure}
 
-También encontramos una barra de búsqueda, con la que podremos introducir una cadena con la que se filtraran los repositorios mostrados, haciendo así más sencillo encontrar un determinado repositorio.
+También encontramos una barra de búsqueda, con la que podremos introducir
+una cadena con la que se filtraran los repositorios mostrados, haciendo así
+más sencillo encontrar un determinado repositorio.
 
-En la parte superior, también encontramos un selector, con el cual podremos acceder a alguna de las asignaturas creadas Figura~\ref{figure:mainPageSeleccion}.
+En la parte superior, también encontramos un selector, con el cual podremos
+acceder a alguna de las asignaturas creadas
+(Figura~\ref{figure:mainPageSeleccion}).
+
 \begin{figure}[h!]
-  \includegraphics[width=1\textwidth]{seleccionAsignatura.png}
+  \includegraphics[width=\textwidth]{seleccionAsignatura.png}
   \caption{Selección de una asignatura en la página principal.}
   \label{figure:mainPageSeleccion}
 \end{figure}
@@ -84,99 +149,195 @@ En la parte superior, también encontramos un selector, con el cual podremos acc
 
 \section{Proceso de creación de asignaturas}
 
-    La aplicación, como hemos visto a lo largo de la memoria del proyecto, permite crear la entidad asignatura, mediante la cual, se pueden gestionar los repositorios correspondientes, para ello, cada asignatura tiene el nombre como tal y una cadena de coincidencias con el nombre del repositorio, es decir, como vimos en los requisitos de la aplicación, un tutor específica a sus alumnos que deben crear el repositorio introduciendo en dicho nombre la cadena de texto nombreAsignatura-Curso, con esto, posteriormente el tutor crea en la aplicación una asignatura asignándole el nombre correspondiente e indicando en la entrada de texto de la figura X, cadena de coincidencias con el valor anunciado a los alumnos (nombreAsignatura-Curso), en la página principal hacemos click en la parte superior en el botón de añadir asignatura, nos muestra una ventana emergente como en la figura~\ref{figure:addAsignatura}.
+La aplicación, como hemos visto a lo largo de la memoria del proyecto,
+permite crear la entidad asignatura, mediante la cual se pueden gestionar
+los repositorios correspondientes. Para ello, cada asignatura tiene el
+nombre como tal y una cadena de coincidencias con el nombre del
+repositorio, es decir, como vimos en los requisitos de la aplicación, un
+tutor especifica a sus alumnos que deben crear el repositorio introduciendo
+en dicho nombre la cadena de texto nombreAsignatura-Curso. Con esto,
+posteriormente el tutor crea en la aplicación una asignatura asignándole el
+nombre correspondiente e indicando en la entrada de texto de la
+figura~\ref{figure:addAsignatura}, la cadena de coincidencias con el valor
+anunciado a los alumnos (nombreAsignatura-curso). En la página principal
+hacemos click en la parte superior en el botón de añadir asignatura, nos
+muestra una ventana emergente como en la figura~\ref{figure:addAsignatura}.
 
-    \begin{figure}[h!]
-      \includegraphics[width=1\textwidth]{addAsignatura.png}
-      \caption{Ventana modal para añadir asignatura.}
-      \label{figure:addAsignatura}
-    \end{figure}
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{addAsignatura.png}
+  \caption{Ventana modal para añadir asignatura.}
+  \label{figure:addAsignatura}
+\end{figure}
 
-    De esta manera, al seleccionar la asignatura en el selector de la parte superior, se filtran automáticamente los repositorios de dicha asignatura, haciendo mucho más sencilla la gestión de los repositorios de asignaturas y cursos. Figura~\ref{figure:filtradoAsignatura}.
+De esta manera, al seleccionar la asignatura en el selector de la parte
+superior, se filtran automáticamente los repositorios de dicha asignatura,
+haciendo mucho más sencilla la gestión de los repositorios de asignaturas y
+cursos (figura~\ref{figure:filtradoAsignatura}).
 
-    \begin{figure}[h!]
-      \includegraphics[width=1\textwidth]{filtradoPorAsignatura.png}
-      \caption{Ejemplo de filtrado por asignatura ARSO.}
-      \label{figure:filtradoAsignatura}
-    \end{figure}
-    En algunos casos, es posible que ocurra que algún alumno no realice correctamente la creación del repositorio con la cadena de coincidencias indicada por el tutor, en este caso, se ofrece la posibilidad de añadir un repositorio a una asignatura de forma manual. Como vemos a continuación.
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{filtradoPorAsignatura.png}
+  \caption{Ejemplo de filtrado por asignatura ARSO.}
+  \label{figure:filtradoAsignatura}
+\end{figure}
 
+En algunos casos, es posible que ocurra que algún alumno no realice
+correctamente la creación del repositorio con la cadena de coincidencias
+indicada por el tutor. En este caso, se ofrece la posibilidad de añadir un
+repositorio a una asignatura de forma manual. Como vemos a continuación.
 
 
 
 \section{Adición manual de un repostorio en una asignatura}
 
+Previamente a este paso, la asignatura debe haber sido correctamente
+creada. Para añadir un repositorio a una asignatura, en primer lugar
+debemos encontrar el repositorio que se desea añadir, buscándolo de forma
+manual o utilizando la barra de búsqueda de la página principal, una vez
+encontrado el repositorio, hacemos click en el botón ``añadir en
+asignatura'', apareciendo una ventana emergente correspondiente a la
+figura~\ref{figure:repoAAsignatura}.
 
-    Previamente a este paso, la asignatura debe haber sido correctamente creada.
-    Para añadir un repositorio a una asignatura, en primer lugar debemos encontrar el repositorio que se desea añadir, buscándolo de forma manual o utilizando la barra de búsqueda de la página principal, una vez encontrado el repositorio, hacemos click en el botón “añadir en asignatura”, apareciéndose una ventana emergente, correspondiente a la figura~\ref{figure:repoAAsignatura}
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{AñadirAsignaturaRepositorio.png}
+  \caption{Ventana modal añadir repositorio a asignatura.}
+  \label{figure:repoAAsignatura}
+\end{figure}
 
-    \begin{figure}[h!]
-      \includegraphics[width=1\textwidth]{AñadirAsignaturaRepositorio.png}
-      \caption{Ventana modal añadir repositorio a asignatura.}
-      \label{figure:repoAAsignatura}
-    \end{figure}
+En esta ventana, seleccionamos la asignatura con el selector sobre la que
+queremos añadir el repositorio y hacemos click en el botón de confirmación
+añadir.
 
-    En esta ventana, seleccionamos la asignatura con el selector sobre la que queremos añadir el repositorio y hacemos click en el botón de confirmación añadir. 
+Una vez realizado este paso, el repositorio se añadirá a la asignatura,
+mostrando posteriormente al seleccionar las asignaturas con el selector de
+la página principal, y quedando persistentes para la misma.
 
-    Una vez realizado este paso, el repositorio se añadirá a la asignatura, mostrando posteriormente al seleccionar las asignaturas con el selector de la página principal, y quedando persistentes para la misma.
+En la figura~\ref{figure:asignaturaConReposManuales} vemos un ejemplo de
+adición de un repositorio a una asignatura, en este caso se ha añadido el
+repositorio TFG sobre la asignatura ARSO, de tal forma que al seleccionar
+ARSO en el selector de la página principal, muestra tanto los repositorios
+que coinciden con la cadena de coincidencias de la asignatura, como los
+repositorios añadidos de forma manual.
 
-    En la figura~\ref{figure:asignaturaConReposManuales}, vemos un ejemplo de adición de un repositorio a una asignatura, en este caso se ha añadido el repositorio TFG sobre la asignatura ARSO, de tal forma que al seleccionar ARSO en el selector de la página principal, muestra tanto los repositorios que coinciden con la cadena de coincidencias de la asignatura, como los repositorios añadidos de forma manual.
-
-    \begin{figure}[h!]
-      \includegraphics[width=1\textwidth]{repositorioAdicionadoEnAsignatura.png}
-      \caption{Ejemplo asignatura con repositorios manualmente añadidos.}
-      \label{figure:asignaturaConReposManuales}
-    \end{figure}
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{repositorioAdicionadoEnAsignatura.png}
+  \caption{Ejemplo asignatura con repositorios manualmente añadidos.}
+  \label{figure:asignaturaConReposManuales}
+\end{figure}
 
 \section{Acceso al panel de estadísticas de un repositorio}
 
-    Sobre la página principal, en la tabla de repositorios, en cualquier momento, haciendo click en el interior de la fila de la tabla correspondiente al repositorio, accederemos al panel de estadísticas del mismo. De tal forma que veremos una nueva interfaz, correspondiente a la figura~\ref{figure:estadRepo}.
+Sobre la página principal, en la tabla de repositorios, en cualquier
+momento, haciendo click en el interior de la fila de la tabla
+correspondiente al repositorio, accederemos al panel de estadísticas del
+mismo. De tal forma que veremos una nueva interfaz, correspondiente a la
+figura~\ref{figure:estadRepo}.
 
-    \begin{figure}[h!]
-      \includegraphics[width=1\textwidth]{estadisticasRepositorio.png}
-      \caption{Interfaz del panel de estadísticas de un repositorio.}
-      \label{figure:estadRepo}
-    \end{figure}
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{estadisticasRepositorio.png}
+  \caption{Interfaz del panel de estadísticas de un repositorio.}
+  \label{figure:estadRepo}
+\end{figure}
 
-    En ella encontramos los siguientes elementos,
-    \begin{enumerate}
-      \item Un primer gráfico, en el lado izquierdo, el cual nos muestra la distribución de commits de cada uno de los colaboradores del repositorio a lo largo del curso educativo. Pudiendo conocer el número de commits mensuales de cada alumno y visualizar un gráfico representativo de dichos datos.
-      \item Un segundo gráfico, en el lado derecho, el cual muestra el número de commits totales realizados sobre un repositorio. Especialmente útil cuando queremos averiguar si existen sobrecargas de trabajo entre diferentes alumnos.
-      \item Por último, en la parte inferior de los gráficos encontramos desplegables los cuales muestran cada uno de los commits realizados sobre el repositorio, de tal manera que los últimos commits aparecen al principio y los primeros al final. Para cada commit, se muestra el autor del commit, y al hacer click sobre el desplegable, se nos muestra de forma textual los cambios que se han realizado en dicho commit, pudiendo así ver que tan grandes son las modificaciones que han implicado dicho commit. Figura~\ref{figure:imagenPatch}.
-    \end{enumerate}
+En ella encontramos los siguientes elementos:
 
-    \begin{figure}[h!]
-      \includegraphics[width=1\textwidth]{analisisPatchRepositorio.png}
-      \caption{Desplegables de la parte inferior del panel de estadísticas.}
-      \label{figure:imagenPatch}
-    \end{figure}
+\begin{enumerate}
+\item Un primer gráfico, en el lado izquierdo, el cual nos muestra la
+  distribución de commits de cada uno de los colaboradores del repositorio
+  a lo largo del curso educativo. Pudiendo conocer el número de commits
+  mensuales de cada alumno y visualizar un gráfico representativo de dichos
+  datos.
+\item Un segundo gráfico, en el lado derecho, el cual muestra el número de
+  commits totales realizados sobre un repositorio. Especialmente útil
+  cuando queremos averiguar si existen sobrecargas de trabajo entre
+  diferentes alumnos.
+\item Por último, en la parte inferior de los gráficos encontramos
+  desplegables los cuales muestran cada uno de los commits realizados sobre
+  el repositorio, de tal manera que los últimos commits aparecen al
+  principio y los primeros al final. Para cada commit, se muestra el autor
+  del commit, y al hacer click sobre el desplegable, se nos muestra de
+  forma textual los cambios que se han realizado en dicho commit, pudiendo
+  así ver que tan grandes son las modificaciones que han implicado dicho
+  commit (figura~\ref{figure:imagenPatch}).
+\end{enumerate}
 
-\chapter{Estructura del proyecto y puesta en marcha.\label{09EstructuraYpuesta}}
+\begin{figure}[h!]
+  \includegraphics[width=1\textwidth]{analisisPatchRepositorio.png}
+  \caption{Desplegables de la parte inferior del panel de estadísticas.}
+  \label{figure:imagenPatch}
+\end{figure}
 
-El proyecto está publicado en GitHub sobre el siguiente enlace\footnote{\url{https://github.com/JuanPedroMartinez/TFG-NODE}} quedando la estructura del proyecto dividida en los siguientes directorios y ficheros.
+\chapter{Estructura del proyecto y puesta en marcha\label{09EstructuraYpuesta}}
+
+El proyecto está publicado en
+GitHub\footnote{\url{https://github.com/JuanPedroMartinez/TFG-NODE}.}
+quedando la estructura del proyecto dividida en los siguientes directorios
+y ficheros.
 
 \begin{itemize}
-  \item En primer lugar, encontramos la carpeta memoria, en la cual está implementada toda la lógica del lenguaje LATEX para la generación de este fichero .pdf
-  
-  \item En segundo lugar, el directorio modules, contiene módulos propios desarrollados en Javascript, para el manejo de la entidad asignatura y su persistencia.
-  
-  \item Por otra parte, encontramos una carpeta restjs, correspondiente al segundo servidor, encargado de gestionar las peticiones al API REST de GitHub, en este directorio, al igual que en el raíz, encontraremos un fichero package.json y app.js los cuales corresponden al paquete de dependencias del proyecto y la aplicación principal para Node.js.
-  
-  \item En el directorio scripts, tenemos ubicado el script correspondiente para la inicialización de una base de datos MySQL, cumpliendo los requerimientos y tablas necesarios para el funcionamiento de la aplicación.
-  
-  \item En la carpeta static, encontramos los ficheros estáticos, es decir, los ficheros CSS y Javascript usados y solicitados por el navegador del cliente.
+\item En primer lugar, encontramos la carpeta {\tt memoria}, que contiene
+  esta memoria en formato \LaTeX{}.
+
+\item En segundo lugar, el directorio {\tt modules}, contiene módulos propios
+  desarrollados en Javascript, para el manejo de la entidad asignatura y su
+  persistencia.
+
+\item Por otra parte, encontramos una carpeta {\tt restjs}, correspondiente
+  al segundo servidor, encargado de gestionar las peticiones al API REST de
+  GitHub, en este directorio, al igual que en el raíz, encontraremos un
+  fichero {\tt package.json} y {\tt app.js}, los cuales corresponden al
+  paquete de dependencias del proyecto y la aplicación principal para
+  NodeJS.
+
+\item En el directorio {\tt scripts}, tenemos ubicado el script
+  correspondiente para la inicialización de una base de datos MySQL,
+  cumpliendo los requerimientos y tablas necesarios para el funcionamiento
+  de la aplicación.
+
+\item En la carpeta {\tt static}, encontramos los ficheros estáticos, es
+  decir, los ficheros CSS y Javascript usados y solicitados por el
+  navegador del cliente.
 \end{itemize}
 
-Además, en el proyecto encontramos dos ficheros ``Dockerfile'', uno en la carpeta raíz y otro situado dentro de la carpeta del segundo servidor ``restjs''. Estos se encargan de construir las imágenes de los contenedores, en los cuales se correrán los servicios Node.js.
+Además, en el proyecto encontramos dos ficheros ``Dockerfile'', uno en la
+carpeta raíz y otro situado dentro de la carpeta del segundo servidor
+``restjs''. Estos se encargan de construir las imágenes de los
+contenedores, en los cuales se correrán los servicios NodeJS.
 
-Por otra parte, en el directorio raíz encontramos el fichero docker-compose.yml'', este fichero se corresponde con el fichero de configuración de docker compose, el cual nos permitirá lanzar el proyecto de manera totalmente automática y sobre cualquier plataforma. En este fichero se realiza la configuración necesaria para la puesta en marcha de los dos servidores Node.js y la base de datos MySQL, configurando además una red interna, sobre la cual se intercomunican los servicios creados.
+Por otra parte, en el directorio raíz encontramos el fichero {\tt
+  docker-compose.yml}. este fichero se corresponde con el fichero de
+configuración de docker compose, el cual nos permitirá lanzar el proyecto
+de manera totalmente automática y sobre cualquier plataforma. En este
+fichero se realiza la configuración necesaria para la puesta en marcha de
+los dos servidores NodeJS y la base de datos MySQL, configurando además
+una red interna, sobre la cual se intercomunican los servicios creados.
 
-En cuanto el despliegue del proyecto, necesitamos tener Docker instalado en el sistema, e iniciar Docker, en el caso de trabajar sobre un sistema operativo Windows, abrimos la aplicación ``Docker-Desktop''\cite{DockerDesktop}, o en caso de estar bajo un sistema UNIX, podemos ejecutar el comando ``\emph{sudo systemctl start docker}''.
+En cuanto el despliegue del proyecto, necesitamos tener Docker instalado en
+el sistema, e iniciar Docker, en el caso de trabajar sobre un sistema
+operativo Windows, abrimos la aplicación
+``Docker-Desktop''\cite{DockerDesktop}, o en caso de estar bajo un sistema
+UNIX, podemos ejecutar el comando ``\emph{sudo systemctl start docker}''.
 
-Una vez iniciado Docker, únicamente debemos acceder a la carpeta del proyecto mediante una consola, e introducir el comando ``\emph{docker compose up}''.
-Este comando construirá las imágenes docker de los servicios creados, obteniendo además las imágenes de Node.js y MySQL, llevando a cabo la configuración de todos los servicios y la puesta en marcha de todos ellos.
+Una vez iniciado Docker, únicamente debemos acceder a la carpeta del
+proyecto mediante una consola, e introducir el comando ``\emph{docker
+  compose up}''. Este comando construirá las imágenes docker de los
+servicios creados, obteniendo además las imágenes de NodeJS y MySQL,
+llevando a cabo la configuración de todos los servicios y la puesta en
+marcha de todos ellos.
 
-Tras esperar que el proceso se inicie y los servidores queden escuchando, y la base de datos esté lista para recibir conexiones, el proyecto estará completamente desplegado y funcionando.
+Tras esperar que el proceso se inicie y los servidores queden escuchando, y
+la base de datos esté lista para recibir conexiones, el proyecto estará
+completamente desplegado y funcionando.
+
+A continuación, vemos la configuración del fichero {\tt .yml} construido
+para el arranque de los servicios mediante Docker-Compose. Es de destacar
+la configuración de los servicios, introduciendo como variables de entorno
+los nombres asignados, de esta forma se resuelve el direccionamiento de
+forma automática, mediante una subred que crea Docker-Compose y mediante
+dichas variables posteriormente en el programa podemos acceder al resto de
+servicios configurados. Además, destacamos la configuración de los
+volúmenes, y la inicialización de la base de datos, para contruir el schema
+con un fichero de inicialización para MySQL.
+
 
 \begin{lstlisting}
 version: '2'
@@ -201,13 +362,11 @@ services:
     build: ./restjs
     restart: unless-stopped
     ports:
-      - "3001:3001"
+      - 3001
     volumes:
-    - .:/home/node/restjs
+      - .:/home/node/restjs
     expose:
-      # Opens port 3001 on the container
-      - '3001'
-
+      - 3001
 
   db:
     image: mysql
@@ -215,58 +374,40 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: 'nodelogin'
-      # So you don't have to use root, but you can if you like
       MYSQL_USER: 'user'
-      # You can use whatever password you like
       MYSQL_PASSWORD: 'root'
-      # Password for root access
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
-      # <Port exposed> : < MySQL Port running inside container>
-      - '3005:3306'
-    expose:
-      # Opens port 3306 on the container
-      - '3005'
-      # Where our data will be persisted
+      - 3306
 
     volumes:
       - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
-
 \end{lstlisting}
 
-Vemos la configuración del fichero {\tt .yml} construido para el arranque
-de los servicios mediante Docker-Compose, es de destacar, la configuración
-de los servicios, introduciendo como variables de entorno los nombres
-asignados, de esta forma se resuelve el direccionamiento de forma
-automática, mediante una subred que crea Docker-Compose y mediante dichas
-variables posteriormente en el programa podemos acceder al resto de
-servicios configurados. Además, destacamos la configuración de los
-volúmenes, y la inicialización de la base de datos, para contruir el schema
-con un fichero de inicialización para MySQL.
 
 
-En caso de querer realizar un despliegue normal, sin el uso de la tecnología Docker y usando un despliegue tradicional de NodeJS y MySQL, debemos realizar los siguientes pasos:
+En caso de querer realizar un despliegue normal, sin el uso de la
+tecnología Docker y usando un despliegue tradicional de NodeJS y MySQL,
+debemos realizar los siguientes pasos:
 
 \begin{enumerate}
 \item Desplegar los servidores de manera manual, iniciándose mediante
   consola. Usando para ello los comandos:
 
-  \item \textit{“npm install“},para instalar las dependencias necesarias,
-    en caso de no estas previamente instaladas.
-  \item \textit{“node app.js“}, para lanzar el servidor, quedando en
-    escucha en el puerto 3000.
+\item ``\textit{npm install}'', para instalar las dependencias necesarias,
+  en caso de no estas previamente instaladas.
+\item ``\textit{node app.js}'', para lanzar el servidor, quedando en
+  escucha en el puerto 3000.
 \end{enumerate}
 
-  Este proceso debemos repetirlo también para el segundo servidor contenido
-  en la carpeta “restjs”, cambiando el segundo comando por “node app2.js”.
+Este proceso debemos repetirlo también para el segundo servidor contenido
+en la carpeta {\tt restjs}, cambiando el segundo comando por ``\emph{node
+  app2.js}''.
 
-  Con esto lanzaremos ambos servidores, pero tendríamos que tener instalada
-  y configurada una instancia de MySQL, la cual podríamos inicializar
-  utilizando el fichero “schema.sql” situado en la carpeta “scripts”.
+Con esto lanzaremos ambos servidores, pero tendríamos que tener instalada y
+configurada una instancia de MySQL, la cual podríamos inicializar
+utilizando el fichero {\tt schema.sql} situado en la carpeta {\tt scripts}.
 
-
-
-  
 
 %%% Local variables:
 %%% TeX-master: "memoria.tex"
